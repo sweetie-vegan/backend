@@ -27,12 +27,13 @@ public class ProductEntity {
     private ProductCategoryEntity productCategory;
 
     @Builder
-    public ProductEntity(Long productId, String productName, String productDescription, int price, int count, boolean sale) {
+    public ProductEntity(Long productId, String productName, String productDescription, int price, int count, boolean sale, ProductCategoryEntity productCategory) {
         this.productId = productId;
         this.productName = productName;
         this.productDescription = productDescription;
         this.price = price;
         this.count = count;
         this.sale = sale;
+        this.productCategory = productCategory;
     }
 }
