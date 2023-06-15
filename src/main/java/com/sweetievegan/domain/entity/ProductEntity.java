@@ -1,6 +1,7 @@
 package com.sweetievegan.domain.entity;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,6 +22,7 @@ public class ProductEntity {
     private int count;
     private boolean sale;
 
+    @Builder
     public ProductEntity(Long productId, String productName, String productDescription, int price, int count, boolean sale) {
         this.productId = productId;
         this.productName = productName;
