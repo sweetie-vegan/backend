@@ -1,15 +1,15 @@
 package com.sweetievegan.domain.service;
 
-import com.sweetievegan.domain.dto.ProductDto;
+import com.sweetievegan.domain.dto.OnlyProductDto;
 
 import java.util.List;
 
 public interface ProductService {
-    List<ProductDto> getAllProducts();
-    ProductDto findProductByProductId(int productId);
-    int registerProduct(ProductDto productDto);
-    ProductDto updateProductDetail(int productId, ProductDto productDto);
+    List<OnlyProductDto> getAllProducts();
+    OnlyProductDto findProductByProductId(int productId);
+    int registerProduct(OnlyProductDto onlyProductDto);
+    OnlyProductDto updateProductDetail(int productId, OnlyProductDto onlyProductDto);
     int removeProduct(int productId);
-    List<ProductDto> findProductsBySearchingKeyword(String keyword, int price, boolean sale);
+    List<OnlyProductDto> findProductsBySearchingKeyword(String keyword, int price, boolean sale);
 
 }

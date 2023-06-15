@@ -1,6 +1,6 @@
 package com.sweetievegan.domain.controller;
 
-import com.sweetievegan.domain.dto.ProductDto;
+import com.sweetievegan.domain.dto.OnlyProductDto;
 import com.sweetievegan.domain.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,13 +31,13 @@ public class ProductController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> productRegister(ProductDto productDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.registerProduct(productDto));
+    public ResponseEntity<?> productRegister(OnlyProductDto onlyProductDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.registerProduct(onlyProductDto));
     }
 
     @PutMapping("/{productId}")
-    public ResponseEntity<?> productModify(@PathVariable("productId") int productId, @RequestBody ProductDto productDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProductDetail(productId, productDto));
+    public ResponseEntity<?> productModify(@PathVariable("productId") int productId, @RequestBody OnlyProductDto onlyProductDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProductDetail(productId, onlyProductDto));
     }
 
     @DeleteMapping("/{productId}")

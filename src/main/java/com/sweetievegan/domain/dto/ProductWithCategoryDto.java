@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDto {
+public class ProductWithCategoryDto {
     private Long productId;
     private String productName;
     private String productDescription;
