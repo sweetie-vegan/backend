@@ -1,4 +1,4 @@
-package com.sweetievegan.domain.dto;
+package com.domain.dto;
 
 public class ProductWithCategoryAndProductImgDto {
 }

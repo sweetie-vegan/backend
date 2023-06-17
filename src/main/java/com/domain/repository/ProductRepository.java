@@ -1,6 +1,6 @@
-package com.sweetievegan.domain.repository;
+package com.domain.repository;
 
-import com.sweetievegan.domain.entity.ProductEntity;
+import com.domain.entity.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

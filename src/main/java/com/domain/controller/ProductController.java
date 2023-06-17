@@ -1,7 +1,7 @@
-package com.sweetievegan.domain.controller;
+package com.domain.controller;
 
-import com.sweetievegan.domain.dto.OnlyProductDto;
-import com.sweetievegan.domain.service.ProductService;
+import com.domain.dto.OnlyProductDto;
+import com.domain.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
