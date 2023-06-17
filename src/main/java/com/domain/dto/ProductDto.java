@@ -1,5 +1,6 @@
 package com.domain.dto;
 
+import com.domain.entity.ProductCategoryEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,12 +10,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductWithCategoryDto {
+public class ProductDto {
     private Long productId;
     private String productName;
     private String productDescription;
     private int price;
     private int count;
     private boolean sale;
-    private String categoryId;
+    private ProductCategoryEntity productCategory;
 }

@@ -1,6 +1,6 @@
 package com.domain.controller;
 
-import com.domain.dto.OnlyProductDto;
+import com.domain.dto.ProductDto;
 import com.domain.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,13 +31,13 @@ public class ProductController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> productRegister(OnlyProductDto onlyProductDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.registerProduct(onlyProductDto));
+    public ResponseEntity<?> productRegister(ProductDto productDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.registerProduct(productDto));
     }
 
     @PutMapping("/{productId}")
-    public ResponseEntity<?> productModify(@PathVariable("productId") int productId, @RequestBody OnlyProductDto onlyProductDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProductDetail(productId, onlyProductDto));
+    public ResponseEntity<?> productModify(@PathVariable("productId") int productId, @RequestBody ProductDto productDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProductDetail(productId, productDto));
     }
 
     @DeleteMapping("/{productId}")

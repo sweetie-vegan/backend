@@ -1,15 +1,15 @@
 package com.domain.service;
 
-import com.domain.dto.OnlyProductDto;
+import com.domain.dto.ProductDto;
 
 import java.util.List;
 
 public interface ProductService {
-    List<OnlyProductDto> getAllProducts();
-    OnlyProductDto findProductByProductId(int productId);
-    int registerProduct(OnlyProductDto onlyProductDto);
-    OnlyProductDto updateProductDetail(int productId, OnlyProductDto onlyProductDto);
+    List<ProductDto> getAllProducts();
+    ProductDto findProductByProductId(int productId);
+    int registerProduct(ProductDto productDto);
+    ProductDto updateProductDetail(int productId, ProductDto productDto);
     int removeProduct(int productId);
-    List<OnlyProductDto> findProductsBySearchingKeyword(String keyword, int price, boolean sale);
+    List<ProductDto> findProductsBySearchingKeyword(String keyword, int price, boolean sale);
 
 }
