@@ -17,5 +17,6 @@ public class ProductDto {
     private int price;
     private int count;
     private boolean sale;
-    private ProductCategoryEntity productCategory;
+    private Long productCategoryId;
+    private String productCategoryName;
 }
