@@ -1,6 +1,7 @@
 package com.domain.entity;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,5 +16,11 @@ public class ProductCategoryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
-    private String name;
+    private String categoryName;
+
+    @Builder
+    public ProductCategoryEntity(Long categoryId, String categoryName) {
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+    }
 }
