@@ -23,7 +23,7 @@ public class ProductEntity {
     private boolean sale;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "categoryId")
     private ProductCategoryEntity productCategory;
 
     @Builder

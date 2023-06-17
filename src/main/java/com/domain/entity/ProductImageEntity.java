@@ -20,7 +20,7 @@ public class ProductImageEntity {
     private boolean mainImg;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "productId")
     private ProductEntity product;
 
     @Builder
