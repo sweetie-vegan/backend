@@ -19,7 +19,7 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProducts());
     }
     @GetMapping("/{productId}")
-    public ResponseEntity<?> productDetailByProductId(@PathVariable("productId") int productId) {
+    public ResponseEntity<?> productDetailByProductId(@PathVariable("productId") Long productId) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.findProductByProductId(productId));
     }
 
@@ -36,12 +36,12 @@ public class ProductController {
     }
 
     @PutMapping("/{productId}")
-    public ResponseEntity<?> productModify(@PathVariable("productId") int productId, @RequestBody ProductDto productDto) {
+    public ResponseEntity<?> productModify(@PathVariable("productId") Long productId, @RequestBody ProductDto productDto) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.updateProductDetail(productId, productDto));
     }
 
     @DeleteMapping("/{productId}")
-    public ResponseEntity<?> productDelete(@PathVariable("productId") int productId) {
+    public ResponseEntity<?> productDelete(@PathVariable("productId") Long productId) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.removeProduct(productId));
     }
 }

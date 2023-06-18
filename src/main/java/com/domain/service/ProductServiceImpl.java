@@ -39,7 +39,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDto findProductByProductId(int productId) {
+    public ProductDto findProductByProductId(Long productId) {
+        ProductEntity productEntity = productRepository.findProductByProductId(productId);
+
         return null;
     }
 
@@ -65,12 +67,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDto updateProductDetail(int productId, ProductDto productDto) {
+    public ProductDto updateProductDetail(Long productId, ProductDto productDto) {
         return null;
     }
 
     @Override
-    public int removeProduct(int productId) {
+    public int removeProduct(Long productId) {
         return 0;
     }
 
