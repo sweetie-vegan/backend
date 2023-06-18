@@ -1,12 +1,18 @@
 package com.sweetievegan.domain.service;
 
 import com.sweetievegan.domain.dto.MemberDto;
+import com.sweetievegan.domain.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
+
+    private final MemberRepository memberRepository;
+
     @Override
     public List<MemberDto> getAllMembers() {
         return null;
