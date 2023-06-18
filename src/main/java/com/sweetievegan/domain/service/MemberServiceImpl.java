@@ -34,8 +34,7 @@ public class MemberServiceImpl implements MemberService {
                 .subscribe(memberDto.isSubscribe())
                 .avail(memberDto.isAvail())
                 .build();
-        memberRepository.save(memberDtoToEntity);
-        return memberDto.getMemberId();
+        return memberRepository.save(memberDtoToEntity).getMemberId();
     }
 
     @Override
