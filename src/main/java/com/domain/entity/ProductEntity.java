@@ -35,4 +35,15 @@ public class ProductEntity {
         this.count = count;
         this.sale = sale;
     }
+
+    public void editProductDetail(String productName, String productDescription, int price, int count) {
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.price = price;
+        this.count = count;
+    }
+
+    public void editSale() {
+        this.sale = !this.sale;
+    }
 }
