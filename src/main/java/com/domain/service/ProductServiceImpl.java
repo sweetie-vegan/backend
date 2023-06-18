@@ -1,9 +1,7 @@
 package com.domain.service;
 
 import com.domain.dto.ProductDto;
-import com.domain.entity.ProductCategoryEntity;
 import com.domain.entity.ProductEntity;
-import com.domain.repository.ProductCategoryRepository;
 import com.domain.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +16,6 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
-    private final ProductCategoryRepository productCategoryRepository;
 
     @Override
     public List<ProductDto> getAllProducts() {
@@ -32,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
                     .price(productEntity.getPrice())
                     .count(productEntity.getCount())
                     .sale(productEntity.isSale())
-                    .productCategoryId(productEntity.getProductCategory().getCategoryId())
+//                    .productCategoryId(productEntity.getProductCategory().getCategoryId())
                     .build();
         }
         return productDtos;
@@ -48,18 +45,18 @@ public class ProductServiceImpl implements ProductService {
                 .price(productEntity.getPrice())
                 .count(productEntity.getCount())
                 .sale(productEntity.isSale())
-                .productCategoryId(productEntity.getProductCategory().getCategoryId())
+//                .productCategoryId(productEntity.getProductCategory().getCategoryId())
                 .build();
         return productEntityToDto;
     }
 
     @Override
     public Long registerProduct(ProductDto productDto) {
-        String productCategoryName = productCategoryRepository.findCategoryNameByCategoryId(productDto.getProductCategoryId());
-        ProductCategoryEntity productCategoryEntity = ProductCategoryEntity.builder()
-                .categoryId(productDto.getProductCategoryId())
-                .categoryName(productCategoryName)
-                .build();
+//        String productCategoryName = productCategoryRepository.findCategoryNameByCategoryId(productDto.getProductCategoryId());
+//        ProductCategoryEntity productCategoryEntity = ProductCategoryEntity.builder()
+//                .categoryId(productDto.getProductCategoryId())
+//                .categoryName(productCategoryName)
+//                .build();
         ProductEntity productDtoToEntity = ProductEntity.builder()
                 .productId(productDto.getProductId())
                 .productName(productDto.getProductName())
@@ -67,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
                 .price(productDto.getPrice())
                 .count(productDto.getCount())
                 .sale(productDto.isSale())
-                .productCategory(productCategoryEntity)
+//                .productCategory(productCategoryEntity)
                 .build();
 
         productRepository.save(productDtoToEntity);;

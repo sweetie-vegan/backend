@@ -22,18 +22,17 @@ public class ProductEntity {
     private int count;
     private boolean sale;
 
-    @ManyToOne
-    @JoinColumn(name = "categoryId")
-    private ProductCategoryEntity productCategory;
+//    @ManyToOne
+//    @JoinColumn(name = "categoryId")
+//    private ProductCategoryEntity productCategory;
 
     @Builder
-    public ProductEntity(Long productId, String productName, String productDescription, int price, int count, boolean sale, ProductCategoryEntity productCategory) {
+    public ProductEntity(Long productId, String productName, String productDescription, int price, int count, boolean sale) {
         this.productId = productId;
         this.productName = productName;
         this.productDescription = productDescription;
         this.price = price;
         this.count = count;
         this.sale = sale;
-        this.productCategory = productCategory;
     }
 }
