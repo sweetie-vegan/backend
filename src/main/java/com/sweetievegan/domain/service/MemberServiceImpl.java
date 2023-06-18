@@ -39,11 +39,12 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public MemberDto updateMemberDetail(Long memberId, MemberDto memberDto) {
-        return null;
+        return memberDto;
     }
 
     @Override
-    public int removeMember(Long memberId) {
-        return 0;
+    public Long removeMember(Long memberId) {
+        memberRepository.deleteById(memberId);
+        return memberId;
     }
 }

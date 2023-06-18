@@ -9,5 +9,5 @@ public interface MemberService {
     MemberDto findMemberByLoginId(String loginId);
     Long registerMember(MemberDto memberDto);
     MemberDto updateMemberDetail(Long memberId, MemberDto memberDto);
-    int removeMember(Long memberId);
+    Long removeMember(Long memberId);
 }
