@@ -38,8 +38,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public MemberDto updateMemberDetail(Long memberId, MemberDto memberDto) {
-        return memberDto;
+    public Long updateMemberDetail(Long memberId, MemberDto memberDto) {
+        MemberEntity memberEntityToUpdate = memberRepository.findMemberByMemberId(memberId);
+        memberEntityToUpdate.editMemberDetail(memberDto.getPw(), memberDto.getNickname(), memberDto.getProfileImg());
+        memberRepository.save(memberEntityToUpdate);
+        return memberEntityToUpdate.getMemberId();
     }
 
     @Override

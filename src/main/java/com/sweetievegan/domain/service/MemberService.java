@@ -8,6 +8,6 @@ public interface MemberService {
     List<MemberDto> getAllMembers();
     MemberDto findMemberByLoginId(String loginId);
     Long registerMember(MemberDto memberDto);
-    MemberDto updateMemberDetail(Long memberId, MemberDto memberDto);
+    Long updateMemberDetail(Long memberId, MemberDto memberDto);
     Long removeMember(Long memberId);
 }

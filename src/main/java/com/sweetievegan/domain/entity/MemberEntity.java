@@ -34,4 +34,19 @@ public class MemberEntity {
         this.avail = avail;
         this.profileImg = profileImg;
     }
+
+    public void editMemberDetail(String pw, String nickname, String profileImg) {
+        this.pw = pw;
+        this.nickname = nickname;
+        this.profileImg = profileImg;
+    }
+
+    public void updateAuthorization() {
+        this.avail = !this.avail;
+    }
+
+    public void updateSubscribe() {
+        this.subscribe = !this.subscribe;
+    }
+
 }
