@@ -1,6 +1,7 @@
 package com.sweetievegan.domain.service;
 
 import com.sweetievegan.domain.dto.MemberDto;
+import com.sweetievegan.domain.entity.MemberEntity;
 import com.sweetievegan.domain.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,17 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public int registerMember(MemberDto memberDto) {
-        return 0;
+    public Long registerMember(MemberDto memberDto) {
+        MemberEntity memberDtoToEntity = MemberEntity.builder()
+                .loginId(memberDto.getLoginId())
+                .pw(memberDto.getPw())
+                .nickname(memberDto.getNickname())
+                .authorization(memberDto.isAuthorization())
+                .subscribe(memberDto.isSubscribe())
+                .avail(memberDto.isAvail())
+                .build();
+        memberRepository.save(memberDtoToEntity);
+        return memberDto.getMemberId();
     }
 
     @Override

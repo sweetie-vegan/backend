@@ -19,6 +19,8 @@ public class MemberEntity {
     private boolean authorization;
     private boolean subscribe;
     private boolean avail;
+
+    @Column(nullable = true)
     private String profileImg;
 
     @Builder
