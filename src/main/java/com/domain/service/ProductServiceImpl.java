@@ -41,8 +41,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto findProductByProductId(Long productId) {
         ProductEntity productEntity = productRepository.findProductByProductId(productId);
-
-        return null;
+        ProductDto productEntityToDto = ProductDto.builder()
+                .productId(productEntity.getProductId())
+                .productName(productEntity.getProductName())
+                .productDescription(productEntity.getProductDescription())
+                .price(productEntity.getPrice())
+                .count(productEntity.getCount())
+                .sale(productEntity.isSale())
+                .productCategoryId(productEntity.getProductCategory().getCategoryId())
+                .build();
+        return productEntityToDto;
     }
 
     @Override
