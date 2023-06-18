@@ -9,7 +9,7 @@ public interface ProductService {
     ProductDto findProductByProductId(Long productId);
     Long registerProduct(ProductDto productDto);
     ProductDto updateProductDetail(Long productId, ProductDto productDto);
-    int removeProduct(Long productId);
+    Long removeProduct(Long productId);
     List<ProductDto> findProductsBySearchingKeyword(String keyword, int price, boolean sale);
 
 }
