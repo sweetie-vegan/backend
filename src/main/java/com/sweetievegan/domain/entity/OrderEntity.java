@@ -1,6 +1,7 @@
 package com.sweetievegan.domain.entity;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -27,4 +28,13 @@ public class OrderEntity {
     private String addressDetail;
     private String tel;
 
+    @Builder
+    public OrderEntity(int totalPrice, int count, String orderName, String address, String addressDetail, String tel) {
+        this.totalPrice = totalPrice;
+        this.count = count;
+        this.orderName = orderName;
+        this.address = address;
+        this.addressDetail = addressDetail;
+        this.tel = tel;
+    }
 }
