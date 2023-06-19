@@ -1,6 +1,6 @@
-package com.domain.specification;
+package com.sweetievegan.domain.product.specification;
 
-import com.domain.entity.ProductEntity;
+import com.sweetievegan.domain.product.entity.ProductEntity;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;

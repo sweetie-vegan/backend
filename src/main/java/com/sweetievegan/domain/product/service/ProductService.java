@@ -1,6 +1,6 @@
-package com.domain.service;
+package com.sweetievegan.domain.product.service;
 
-import com.domain.dto.ProductDto;
+import com.sweetievegan.domain.product.dto.ProductDto;
 
 import java.util.List;
 

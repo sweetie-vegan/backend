@@ -1,8 +1,8 @@
-package com.domain.service;
+package com.sweetievegan.domain.product.service;
 
-import com.domain.dto.ProductDto;
-import com.domain.entity.ProductEntity;
-import com.domain.repository.ProductRepository;
+import com.sweetievegan.domain.product.dto.ProductDto;
+import com.sweetievegan.domain.product.entity.ProductEntity;
+import com.sweetievegan.domain.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
