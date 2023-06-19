@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -54,7 +55,22 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderDto> findOrdersByMemberLoginId(String MemberLoginId) {
-        return null;
+    public List<OrderDto> findOrdersByMemberLoginId(String memberLoginId) {
+        List<OrderEntity> orderEntities = orderRepository.findOrdersByMemberLoginId(memberLoginId);
+        List<OrderDto> orderEntitiesToDtos = new ArrayList<>();
+        for(OrderEntity orderEntity : orderEntities) {
+            OrderDto orderEntityToDto = OrderDto.builder()
+                    .orderId(orderEntity.getOrderId())
+                    .orderDate(orderEntity.getOrderDate())
+                    .totalPrice(orderEntity.getTotalPrice())
+                    .count(orderEntity.getCount())
+                    .orderName(orderEntity.getOrderName())
+                    .address(orderEntity.getAddress())
+                    .addressDetail(orderEntity.getAddressDetail())
+                    .build();
+
+            orderEntitiesToDtos.add(orderEntityToDto);
+        }
+        return orderEntitiesToDtos;
     }
 }
