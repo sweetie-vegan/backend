@@ -1,6 +1,6 @@
-package com.domain.repository;
+package com.sweetievegan.domain.cart.repository;
 
-import com.domain.entity.CartEntity;
+import com.sweetievegan.domain.cart.entity.CartEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CartRepository extends JpaRepository<CartEntity, Long> {
