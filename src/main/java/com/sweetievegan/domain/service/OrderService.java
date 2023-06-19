@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface OrderService {
     List<OrderDto> getAllOrders();
-    int registerOrder(OrderDto orderDto);
-    int removeOrder(Long orderId);
+    Long registerOrder(OrderDto orderDto);
+    Long removeOrder(Long orderId);
     OrderDto findOrderByOrderId(Long orderId);
-    List<OrderDto> findOrdersByMemberId(Long memberId);
+    List<OrderDto> findOrdersByMemberLoginId(String MemberLoginId);
 }
