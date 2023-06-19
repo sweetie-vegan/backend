@@ -40,7 +40,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDto findOrderByOrderId(Long orderId) {
-        return null;
+        OrderEntity orderEntity = orderRepository.findOrderByOrderId(orderId);
+        OrderDto orderEntityToDto = OrderDto.builder()
+                .orderId(orderEntity.getOrderId())
+                .orderDate(orderEntity.getOrderDate())
+                .totalPrice(orderEntity.getTotalPrice())
+                .count(orderEntity.getCount())
+                .orderName(orderEntity.getOrderName())
+                .address(orderEntity.getAddress())
+                .addressDetail(orderEntity.getAddressDetail())
+                .build();
+        return orderEntityToDto;
     }
 
     @Override
