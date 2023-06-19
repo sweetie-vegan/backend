@@ -16,5 +16,5 @@ public class ProductDto {
     private int price;
     private int count;
     private boolean sale;
-//    private Long productCategoryId;
+    private Long productCategoryId;
 }
