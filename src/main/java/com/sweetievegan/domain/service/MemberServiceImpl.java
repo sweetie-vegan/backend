@@ -15,16 +15,6 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
 
     @Override
-    public List<MemberDto> getAllMembers() {
-        return null;
-    }
-
-    @Override
-    public MemberDto findMemberByLoginId(String loginId) {
-        return null;
-    }
-
-    @Override
     public Long registerMember(MemberDto memberDto) {
         MemberEntity memberDtoToEntity = MemberEntity.builder()
                 .loginId(memberDto.getLoginId())
