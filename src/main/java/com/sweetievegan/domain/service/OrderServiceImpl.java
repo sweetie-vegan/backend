@@ -18,7 +18,21 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     @Override
     public List<OrderDto> getAllOrders() {
-        return null;
+        List<OrderEntity> orderEntities = orderRepository.findAll();
+        List<OrderDto> orderEntitiesToDtos = new ArrayList<>();
+        for(OrderEntity orderEntity : orderEntities) {
+            OrderDto orderEntityToDto = OrderDto.builder()
+                    .orderId(orderEntity.getOrderId())
+                    .orderDate(orderEntity.getOrderDate())
+                    .totalPrice(orderEntity.getTotalPrice())
+                    .count(orderEntity.getCount())
+                    .orderName(orderEntity.getOrderName())
+                    .address(orderEntity.getAddress())
+                    .addressDetail(orderEntity.getAddressDetail())
+                    .build();
+            orderEntitiesToDtos.add(orderEntityToDto);
+        }
+        return orderEntitiesToDtos;
     }
 
     @Override
@@ -68,7 +82,6 @@ public class OrderServiceImpl implements OrderService {
                     .address(orderEntity.getAddress())
                     .addressDetail(orderEntity.getAddressDetail())
                     .build();
-
             orderEntitiesToDtos.add(orderEntityToDto);
         }
         return orderEntitiesToDtos;
