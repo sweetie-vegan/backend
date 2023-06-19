@@ -22,9 +22,9 @@ public class ProductEntity {
     private int count;
     private boolean sale;
 
-//    @ManyToOne
-//    @JoinColumn(name = "categoryId")
-//    private ProductCategoryEntity productCategory;
+    @ManyToOne
+    @JoinColumn(name = "categoryId")
+    private ProductCategoryEntity productCategory;
 
     @Builder
     public ProductEntity(Long productId, String productName, String productDescription, int price, int count, boolean sale) {
