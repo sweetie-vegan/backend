@@ -1,8 +1,6 @@
-package com.sweetievegan.domain.service;
+package com.sweetievegan.domain.member.service;
 
-import com.sweetievegan.domain.dto.MemberDto;
-
-import java.util.List;
+import com.sweetievegan.domain.member.dto.MemberDto;
 
 public interface MemberService {
     Long registerMember(MemberDto memberDto);

@@ -1,7 +1,7 @@
-package com.sweetievegan.domain.controller;
+package com.sweetievegan.domain.member.controller;
 
-import com.sweetievegan.domain.dto.MemberDto;
-import com.sweetievegan.domain.service.MemberService;
+import com.sweetievegan.domain.member.dto.MemberDto;
+import com.sweetievegan.domain.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

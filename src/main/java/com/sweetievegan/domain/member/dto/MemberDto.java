@@ -1,4 +1,4 @@
-package com.sweetievegan.domain.dto;
+package com.sweetievegan.domain.member.dto;
 
 import lombok.Builder;
 import lombok.Data;

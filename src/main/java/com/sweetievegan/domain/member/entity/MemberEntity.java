@@ -1,4 +1,4 @@
-package com.sweetievegan.domain.entity;
+package com.sweetievegan.domain.member.entity;
 
 import lombok.*;
 

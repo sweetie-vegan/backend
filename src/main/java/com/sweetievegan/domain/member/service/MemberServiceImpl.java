@@ -1,15 +1,16 @@
-package com.sweetievegan.domain.service;
+package com.sweetievegan.domain.member.service;
 
-import com.sweetievegan.domain.dto.MemberDto;
-import com.sweetievegan.domain.entity.MemberEntity;
-import com.sweetievegan.domain.repository.MemberRepository;
+import com.sweetievegan.domain.member.dto.MemberDto;
+import com.sweetievegan.domain.member.entity.MemberEntity;
+import com.sweetievegan.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;
