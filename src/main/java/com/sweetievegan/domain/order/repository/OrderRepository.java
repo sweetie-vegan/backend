@@ -1,6 +1,6 @@
-package com.sweetievegan.domain.repository;
+package com.sweetievegan.domain.order.repository;
 
-import com.sweetievegan.domain.entity.OrderEntity;
+import com.sweetievegan.domain.order.entity.OrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

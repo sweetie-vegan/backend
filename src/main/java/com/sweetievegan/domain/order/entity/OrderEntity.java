@@ -1,4 +1,4 @@
-package com.sweetievegan.domain.entity;
+package com.sweetievegan.domain.order.entity;
 
 import lombok.AccessLevel;
 import lombok.Builder;

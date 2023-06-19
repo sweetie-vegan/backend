@@ -1,8 +1,8 @@
-package com.sweetievegan.domain.service;
+package com.sweetievegan.domain.order.service;
 
-import com.sweetievegan.domain.dto.OrderDto;
-import com.sweetievegan.domain.entity.OrderEntity;
-import com.sweetievegan.domain.repository.OrderRepository;
+import com.sweetievegan.domain.order.dto.OrderDto;
+import com.sweetievegan.domain.order.entity.OrderEntity;
+import com.sweetievegan.domain.order.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
