@@ -2,7 +2,6 @@ package com.sweetievegan.domain.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +9,7 @@ import java.time.LocalDateTime;
 public class OrderDto {
     private Long orderId;
     private LocalDateTime orderDate;
-    private int price;
+    private int totalPrice;
     private int count;
     private String orderName;
     private String address;
@@ -18,10 +17,10 @@ public class OrderDto {
     private String tel;
 
     @Builder
-    public OrderDto(Long orderId, LocalDateTime orderDate, int price, int count, String orderName, String address, String addressDetail, String tel) {
+    public OrderDto(Long orderId, LocalDateTime orderDate, int totalPrice, int count, String orderName, String address, String addressDetail, String tel) {
         this.orderId = orderId;
         this.orderDate = orderDate;
-        this.price = price;
+        this.totalPrice = totalPrice;
         this.count = count;
         this.orderName = orderName;
         this.address = address;

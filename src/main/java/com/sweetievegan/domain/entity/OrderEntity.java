@@ -20,7 +20,7 @@ public class OrderEntity {
     @CreatedDate
     private LocalDateTime orderDate;
 
-    private int price;
+    private int totalPrice;
     private int count;
     private String orderName;
     private String address;
