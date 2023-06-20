@@ -1,9 +1,7 @@
 package com.sweetievegan.domain.product.service;
 
 import com.sweetievegan.domain.product.dto.ProductCategoryDto;
-import com.sweetievegan.domain.product.dto.ProductDto;
 import com.sweetievegan.domain.product.entity.ProductCategoryEntity;
-import com.sweetievegan.domain.product.entity.ProductEntity;
 import com.sweetievegan.domain.product.repository.ProductCategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,8 +36,11 @@ public class ProductCategoryServiceImp implements ProductCategoryService {
         return productCategoryDto.getCategoryId();
     }
     @Override
-    public ProductDto updateProductCategoryName(ProductCategoryDto productCategoryDto) {
-        return null;
+    public ProductCategoryDto updateProductCategoryName(ProductCategoryDto productCategoryDto) {
+        ProductCategoryEntity productCategoryEntityToUpdate = productCategoryRepository.findProductCategoryEntityByCategoryId(productCategoryDto.getCategoryId());
+        productCategoryEntityToUpdate.editProductCategory(productCategoryDto);
+        productCategoryRepository.save(productCategoryEntityToUpdate);
+        return productCategoryDto;
     }
 
     @Override

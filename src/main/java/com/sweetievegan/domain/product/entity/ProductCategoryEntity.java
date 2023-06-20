@@ -22,7 +22,7 @@ public class ProductCategoryEntity {
         this.categoryName = categoryName;
     }
 
-    public void updateProductCategory(ProductCategoryDto productCategoryDto) {
+    public void editProductCategory(ProductCategoryDto productCategoryDto) {
         this.categoryId = productCategoryDto.getCategoryId();
         this.categoryName = productCategoryDto.getCategoryName();
     }
