@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "product_categories")
 public class ProductCategoryEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
     private String categoryName;

@@ -31,7 +31,8 @@ public class ProductController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> productRegister(ProductDto productDto) {
+    public ResponseEntity<?> productRegister(@RequestBody ProductDto productDto) {
+        System.out.println("@@@@@@@@@@@@@@@@" + productDto.getProductName());
         return ResponseEntity.status(HttpStatus.OK).body(productService.registerProduct(productDto));
     }
 

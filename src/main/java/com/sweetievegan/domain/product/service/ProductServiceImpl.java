@@ -26,14 +26,15 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDto> productDtos = new ArrayList<>();
         for(ProductEntity productEntity : productEntities) {
             ProductDto productEntityToDto = ProductDto.builder()
-                    .productId(productEntity.getProductId())
+//                    .productId(productEntity.getProductId())
                     .productName(productEntity.getProductName())
                     .productDescription(productEntity.getProductDescription())
                     .price(productEntity.getPrice())
                     .count(productEntity.getCount())
                     .sale(productEntity.isSale())
-                    .productCategoryId(productEntity.getProductCategory().getCategoryId())
+//                    .productCategoryId(productEntity.getProductCategory().getCategoryId().longValue())
                     .build();
+            productDtos.add(productEntityToDto);
         }
         return productDtos;
     }
@@ -42,36 +43,28 @@ public class ProductServiceImpl implements ProductService {
     public ProductDto findProductByProductId(Long productId) {
         ProductEntity productEntity = productRepository.findProductByProductId(productId);
         ProductDto productEntityToDto = ProductDto.builder()
-                .productId(productEntity.getProductId())
+//                .productId(productEntity.getProductId())
                 .productName(productEntity.getProductName())
                 .productDescription(productEntity.getProductDescription())
                 .price(productEntity.getPrice())
                 .count(productEntity.getCount())
                 .sale(productEntity.isSale())
-                .productCategoryId(productEntity.getProductCategory().getCategoryId())
+//                .productCategoryId(productEntity.getProductCategory().getCategoryId().longValue())
                 .build();
         return productEntityToDto;
     }
 
     @Override
     public Long registerProduct(ProductDto productDto) {
-        String productCategoryName = productCategoryRepository.findCategoryNameByCategoryId(productDto.getProductCategoryId());
-        ProductCategoryEntity productCategoryEntity = ProductCategoryEntity.builder()
-                .categoryId(productDto.getProductCategoryId())
-                .categoryName(productCategoryName)
-                .build();
         ProductEntity productDtoToEntity = ProductEntity.builder()
-                .productId(productDto.getProductId())
                 .productName(productDto.getProductName())
                 .productDescription(productDto.getProductDescription())
                 .price(productDto.getPrice())
                 .count(productDto.getCount())
                 .sale(productDto.isSale())
-                .productCategory(productCategoryEntity)
                 .build();
-
-        productRepository.save(productDtoToEntity);;
-        return productDto.getProductId();
+        productRepository.save(productDtoToEntity);
+        return productRepository.save(productDtoToEntity).getProductId();
     }
 
     @Override
