@@ -3,6 +3,7 @@ package com.sweetievegan.domain.product.service;
 import com.sweetievegan.domain.product.dto.ProductCategoryDto;
 import com.sweetievegan.domain.product.dto.ProductDto;
 import com.sweetievegan.domain.product.entity.ProductCategoryEntity;
+import com.sweetievegan.domain.product.entity.ProductEntity;
 import com.sweetievegan.domain.product.repository.ProductCategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,12 +28,15 @@ public class ProductCategoryServiceImp implements ProductCategoryService {
         }
         return productCategoryDtos;
     }
-
     @Override
     public Long registerProductCategory(ProductCategoryDto productCategoryDto) {
-        return null;
+        ProductCategoryEntity productCategoryDtoToEntity = ProductCategoryEntity.builder()
+                .categoryId(productCategoryDto.getCategoryId())
+                .categoryName(productCategoryDto.getCategoryName())
+                .build();
+        productCategoryRepository.save(productCategoryDtoToEntity);
+        return productCategoryDto.getCategoryId();
     }
-
     @Override
     public ProductDto updateProductCategoryName(ProductCategoryDto productCategoryDto) {
         return null;
