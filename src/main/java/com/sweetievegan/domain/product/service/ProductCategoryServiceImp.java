@@ -44,6 +44,7 @@ public class ProductCategoryServiceImp implements ProductCategoryService {
 
     @Override
     public Long removeProductCategory(Long categoryId) {
-        return null;
+        productCategoryRepository.deleteById(categoryId);
+        return categoryId;
     }
 }
