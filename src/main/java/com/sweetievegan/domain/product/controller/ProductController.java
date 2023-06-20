@@ -1,6 +1,8 @@
 package com.sweetievegan.domain.product.controller;
 
+import com.sweetievegan.domain.product.dto.ProductCategoryDto;
 import com.sweetievegan.domain.product.dto.ProductDto;
+import com.sweetievegan.domain.product.service.ProductCategoryService;
 import com.sweetievegan.domain.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     private final ProductService productService;
+    private final ProductCategoryService productCategoryService;
 
     @GetMapping("")
     public ResponseEntity<?> productList() {
@@ -32,7 +35,6 @@ public class ProductController {
 
     @PostMapping("")
     public ResponseEntity<?> productRegister(@RequestBody ProductDto productDto) {
-        System.out.println("@@@@@@@@@@@@@@@@" + productDto.getProductName());
         return ResponseEntity.status(HttpStatus.OK).body(productService.registerProduct(productDto));
     }
 
@@ -44,5 +46,10 @@ public class ProductController {
     @DeleteMapping("/{productId}")
     public ResponseEntity<?> productDelete(@PathVariable("productId") Long productId) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.removeProduct(productId));
+    }
+
+    @PostMapping("/productCategory")
+    public ResponseEntity<?> productCategoryRegister(@RequestBody ProductCategoryDto productCategoryDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(productCategoryService.registerProductCategory(productCategoryDto));
     }
 }
