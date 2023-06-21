@@ -17,4 +17,5 @@ public class CartResponseDto {
     private int totalCount;
     private double totalPrice;
     private ProductEntity product;
+    private Long memberId;
 }

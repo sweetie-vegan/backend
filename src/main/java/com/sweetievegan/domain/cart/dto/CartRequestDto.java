@@ -12,4 +12,5 @@ public class CartRequestDto {
     private int totalCount;
     private double totalPrice;
     private ProductEntity product;
+    private Long memberId;
 }
