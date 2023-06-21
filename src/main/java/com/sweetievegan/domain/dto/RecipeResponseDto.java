@@ -1,4 +1,4 @@
-package com.sweetievegan.domain.Dto;
+package com.sweetievegan.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
