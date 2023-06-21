@@ -25,11 +25,12 @@ public class ProductEntity {
 //    @JoinColumn(name = "categoryId")
 //    private ProductCategoryEntity productCategory;
 
-    public void editProductDetail(String productName, String productDescription, int price, int count) {
+    public void editProductDetail(String productName, String productDescription, int price, int count, boolean sale) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.price = price;
         this.count = count;
+        this.sale = sale;
     }
 
     public void editSale() {
