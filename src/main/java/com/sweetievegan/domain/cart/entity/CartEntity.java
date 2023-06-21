@@ -22,19 +22,19 @@ public class CartEntity {
     private double totalPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberId")
-    private MemberEntity member;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "productId")
     private ProductEntity product;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberId")
+    private MemberEntity member;
+
     @Builder
-    public CartEntity(Long cartId, int totalCount, double totalPrice, MemberEntity member, ProductEntity product) {
+    public CartEntity(Long cartId, int totalCount, double totalPrice, ProductEntity product, MemberEntity member) {
         this.cartId = cartId;
         this.totalCount = totalCount;
         this.totalPrice = totalPrice;
-        this.member = member;
         this.product = product;
+        this.member = member;
     }
 }
