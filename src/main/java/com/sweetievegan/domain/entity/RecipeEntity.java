@@ -14,14 +14,14 @@ import javax.persistence.*;
 public class RecipeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long recipe;
+    private Long recipeId;
 
     private String title;
     private String content;
 
     @Builder
-    public RecipeEntity(Long recipe, String title, String content) {
-        this.recipe = recipe;
+    public RecipeEntity(Long recipeId, String title, String content) {
+        this.recipeId = recipeId;
         this.title = title;
         this.content = content;
     }
