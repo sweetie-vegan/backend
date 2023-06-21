@@ -7,9 +7,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Table(name="products")
-@Builder
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +19,19 @@ public class ProductEntity {
     private int count;
     private boolean sale;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "categoryId")
-//    private ProductCategoryEntity productCategory;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoryId")
+    private ProductCategoryEntity productCategory;
+
+    @Builder
+    public ProductEntity(Long productId, String productName, String productDescription, int price, int count, boolean sale, ProductCategoryEntity productCategory) {
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.price = price;
+        this.count = count;
+        this.sale = sale;
+        this.productCategory = productCategory;
+    }
 
     public void editProductDetail(String productName, String productDescription, int price, int count, boolean sale) {
         this.productName = productName;
