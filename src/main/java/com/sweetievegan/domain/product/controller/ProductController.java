@@ -1,7 +1,7 @@
 package com.sweetievegan.domain.product.controller;
 
 import com.sweetievegan.domain.product.dto.ProductCategoryDto;
-import com.sweetievegan.domain.product.dto.ProductDto;
+import com.sweetievegan.domain.product.dto.ProductRequestDto;
 import com.sweetievegan.domain.product.service.ProductCategoryService;
 import com.sweetievegan.domain.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -31,12 +31,12 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(productService.findProductsBySearchingKeyword(keyword, price, sale));
     }
     @PostMapping("")
-    public ResponseEntity<?> productRegister(@RequestBody ProductDto productDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.registerProduct(productDto));
+    public ResponseEntity<?> productRegister(@RequestBody ProductRequestDto productRequestDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.registerProduct(productRequestDto));
     }
     @PutMapping("/{productId}")
-    public ResponseEntity<?> productModify(@PathVariable("productId") Long productId, @RequestBody ProductDto productDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProductDetail(productId, productDto));
+    public ResponseEntity<?> productModify(@PathVariable("productId") Long productId, @RequestBody ProductRequestDto productRequestDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProductDetail(productId, productRequestDto));
     }
     @DeleteMapping("/{productId}")
     public ResponseEntity<?> productDelete(@PathVariable("productId") Long productId) {

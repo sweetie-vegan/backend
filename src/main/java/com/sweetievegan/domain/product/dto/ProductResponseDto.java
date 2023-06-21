@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDto {
-//    private Long productId;
+public class ProductResponseDto {
+    private Long productId;
     private String productName;
     private String productDescription;
     private int price;

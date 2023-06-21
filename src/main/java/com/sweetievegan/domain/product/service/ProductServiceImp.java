@@ -1,7 +1,7 @@
 package com.sweetievegan.domain.product.service;
 
-import com.sweetievegan.domain.product.dto.ProductDto;
-import com.sweetievegan.domain.product.entity.ProductCategoryEntity;
+import com.sweetievegan.domain.product.dto.ProductRequestDto;
+import com.sweetievegan.domain.product.dto.ProductResponseDto;
 import com.sweetievegan.domain.product.entity.ProductEntity;
 import com.sweetievegan.domain.product.repository.ProductCategoryRepository;
 import com.sweetievegan.domain.product.repository.ProductRepository;
@@ -15,18 +15,18 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImp implements ProductService {
 
     private final ProductRepository productRepository;
     private final ProductCategoryRepository productCategoryRepository;
 
     @Override
-    public List<ProductDto> getAllProducts() {
+    public List<ProductResponseDto> getAllProducts() {
         List<ProductEntity> productEntities = productRepository.findAll();
-        List<ProductDto> productDtos = new ArrayList<>();
+        List<ProductResponseDto> productDtos = new ArrayList<>();
         for(ProductEntity productEntity : productEntities) {
-            ProductDto productEntityToDto = ProductDto.builder()
-//                    .productId(productEntity.getProductId())
+            ProductResponseDto productEntityToDto = ProductResponseDto.builder()
+                    .productId(productEntity.getProductId())
                     .productName(productEntity.getProductName())
                     .productDescription(productEntity.getProductDescription())
                     .price(productEntity.getPrice())
@@ -40,10 +40,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDto findProductByProductId(Long productId) {
+    public ProductResponseDto findProductByProductId(Long productId) {
         ProductEntity productEntity = productRepository.findProductByProductId(productId);
-        ProductDto productEntityToDto = ProductDto.builder()
-//                .productId(productEntity.getProductId())
+        ProductResponseDto productEntityToDto = ProductResponseDto.builder()
+                .productId(productEntity.getProductId())
                 .productName(productEntity.getProductName())
                 .productDescription(productEntity.getProductDescription())
                 .price(productEntity.getPrice())
@@ -55,24 +55,24 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Long registerProduct(ProductDto productDto) {
+    public Long registerProduct(ProductRequestDto productRequestDto) {
         ProductEntity productDtoToEntity = ProductEntity.builder()
-                .productName(productDto.getProductName())
-                .productDescription(productDto.getProductDescription())
-                .price(productDto.getPrice())
-                .count(productDto.getCount())
-                .sale(productDto.isSale())
+                .productName(productRequestDto.getProductName())
+                .productDescription(productRequestDto.getProductDescription())
+                .price(productRequestDto.getPrice())
+                .count(productRequestDto.getCount())
+                .sale(productRequestDto.isSale())
                 .build();
         productRepository.save(productDtoToEntity);
         return productRepository.save(productDtoToEntity).getProductId();
     }
 
     @Override
-    public ProductDto updateProductDetail(Long productId, ProductDto productDto) {
+    public ProductRequestDto updateProductDetail(Long productId, ProductRequestDto productRequestDto) {
         ProductEntity productEntityToUpdate = productRepository.findProductByProductId(productId);
-        productEntityToUpdate.editProductDetail(productDto.getProductName(), productDto.getProductDescription(), productDto.getPrice(), productDto.getCount());
+        productEntityToUpdate.editProductDetail(productRequestDto.getProductName(), productRequestDto.getProductDescription(), productRequestDto.getPrice(), productRequestDto.getCount());
         productRepository.save(productEntityToUpdate);
-        return productDto;
+        return productRequestDto;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductDto> findProductsBySearchingKeyword(String keyword, int price, boolean sale) {
+    public List<ProductRequestDto> findProductsBySearchingKeyword(String keyword, int price, boolean sale) {
         return null;
     }
 }
