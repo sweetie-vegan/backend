@@ -33,12 +33,12 @@ public class ProductEntity {
         this.productCategory = productCategory;
     }
 
-    public void editProductDetail(String productName, String productDescription, int price, int count, boolean sale) {
+    public void editProductDetail(String productName, String productDescription, int price, int count, ProductCategoryEntity productCategory) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.price = price;
         this.count = count;
-        this.sale = sale;
+        this.productCategory = productCategory;
     }
 
     public void editSale() {

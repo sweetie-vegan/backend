@@ -72,8 +72,9 @@ public class ProductServiceImp implements ProductService {
 
     @Override
     public ProductRequestDto updateProductDetail(Long productId, ProductRequestDto productRequestDto) {
+        ProductCategoryEntity productCategoryEntity = productCategoryRepository.findProductCategoryEntityByCategoryId(productRequestDto.getProductCategoryId());
         ProductEntity productEntityToUpdate = productRepository.findProductByProductId(productId);
-        productEntityToUpdate.editProductDetail(productRequestDto.getProductName(), productRequestDto.getProductDescription(), productRequestDto.getPrice(), productRequestDto.getCount(), productRequestDto.isSale());
+        productEntityToUpdate.editProductDetail(productRequestDto.getProductName(), productRequestDto.getProductDescription(), productRequestDto.getPrice(), productRequestDto.getCount(), productCategoryEntity);
         return productRequestDto;
     }
 
