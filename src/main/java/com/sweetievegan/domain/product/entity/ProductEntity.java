@@ -23,22 +23,27 @@ public class ProductEntity {
     @JoinColumn(name = "categoryId")
     private ProductCategoryEntity productCategory;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "companyId")
+    private ProductCompanyEntity productCompany;
+
     @Builder
-    public ProductEntity(Long productId, String productName, String productDescription, int price, int count, boolean sale, ProductCategoryEntity productCategory) {
+    public ProductEntity(String productName, String productDescription, int price, int count, ProductCategoryEntity productCategory, ProductCompanyEntity productCompany) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.price = price;
         this.count = count;
-        this.sale = sale;
         this.productCategory = productCategory;
+        this.productCompany = productCompany;
     }
 
-    public void editProductDetail(String productName, String productDescription, int price, int count, ProductCategoryEntity productCategory) {
+    public void editProductDetail(String productName, String productDescription, int price, int count, ProductCategoryEntity productCategory, ProductCompanyEntity productCompany) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.price = price;
         this.count = count;
         this.productCategory = productCategory;
+        this.productCompany = productCompany;
     }
 
     public void editSale() {
