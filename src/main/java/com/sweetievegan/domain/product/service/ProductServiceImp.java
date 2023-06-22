@@ -35,7 +35,7 @@ public class ProductServiceImp implements ProductService {
                     .productDescription(productEntity.getProductDescription())
                     .price(productEntity.getPrice())
                     .count(productEntity.getCount())
-                    .sale(productEntity.isSale())
+                    .sale(productEntity.isSellStatus())
                     .productCategoryId(productEntity.getProductCategory().getCategoryId())
                     .build();
             productDtos.add(productEntityToDto);
@@ -52,7 +52,7 @@ public class ProductServiceImp implements ProductService {
                 .productDescription(productEntity.getProductDescription())
                 .price(productEntity.getPrice())
                 .count(productEntity.getCount())
-                .sale(productEntity.isSale())
+                .sale(productEntity.isSellStatus())
                 .productCategoryId(productEntity.getProductCategory().getCategoryId())
                 .build();
         return productEntityToDto;

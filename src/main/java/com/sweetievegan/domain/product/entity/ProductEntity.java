@@ -13,11 +13,20 @@ public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
 
+    @Column(nullable = false, length = 50)
     private String productName;
+
+    @Column(nullable = false)
     private String productDescription;
+
+    @Column(nullable = false)
     private int price;
+
+    @Column(nullable = false)
     private int count;
-    private boolean sale;
+
+    @Column(nullable = false, columnDefinition = "boolean default true")
+    private boolean sellStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId")
@@ -47,6 +56,6 @@ public class ProductEntity {
     }
 
     public void editSale() {
-        this.sale = !this.sale;
+        this.sellStatus = !this.sellStatus;
     }
 }
