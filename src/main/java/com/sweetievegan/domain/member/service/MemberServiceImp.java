@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImp implements MemberService {
     private final MemberRepository memberRepository;
 
     @Override
