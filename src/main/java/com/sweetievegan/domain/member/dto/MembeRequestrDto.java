@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class MemberDto {
+public class MembeRequestrDto {
     private Long memberId;
     private String loginId;
     private String pw;
@@ -15,7 +15,7 @@ public class MemberDto {
     private String profileImg;
 
     @Builder
-    public MemberDto(Long memberId, String loginId, String pw, String nickname, boolean authorization, boolean subscribe, boolean avail, String profileImg) {
+    public MembeRequestrDto(Long memberId, String loginId, String pw, String nickname, boolean authorization, boolean subscribe, boolean avail, String profileImg) {
         this.memberId = memberId;
         this.loginId = loginId;
         this.pw = pw;

@@ -1,6 +1,6 @@
 package com.sweetievegan.domain.member.controller;
 
-import com.sweetievegan.domain.member.dto.MemberDto;
+import com.sweetievegan.domain.member.dto.MembeRequestrDto;
 import com.sweetievegan.domain.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,12 +19,12 @@ public class MemberController {
         return ResponseEntity.status(HttpStatus.OK).body(memberService.getAllMembers());
     }
     @PostMapping("")
-    public ResponseEntity<?> memberRegister(@RequestBody MemberDto memberDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(memberService.registerMember(memberDto));
+    public ResponseEntity<?> memberRegister(@RequestBody MembeRequestrDto membeRequestrDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(memberService.registerMember(membeRequestrDto));
     }
     @PutMapping("/{memberId}")
-    public ResponseEntity<?> memberModify(@PathVariable("memberId") Long memberId, @RequestBody MemberDto memberDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(memberService.updateMemberDetail(memberId, memberDto));
+    public ResponseEntity<?> memberModify(@PathVariable("memberId") Long memberId, @RequestBody MembeRequestrDto membeRequestrDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(memberService.updateMemberDetail(memberId, membeRequestrDto));
     }
     @DeleteMapping("/{memberId}")
     public ResponseEntity<?> memberDelete(@PathVariable("memberId") Long memberId) {

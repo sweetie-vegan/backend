@@ -1,12 +1,15 @@
 package com.sweetievegan.domain.member.service;
 
-import com.sweetievegan.domain.member.dto.MemberDto;
+import com.sweetievegan.domain.member.dto.MembeRequestrDto;
+import com.sweetievegan.domain.member.dto.MemberResponseDto;
 import com.sweetievegan.domain.member.entity.MemberEntity;
 import com.sweetievegan.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,22 +19,42 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
 
     @Override
-    public Long registerMember(MemberDto memberDto) {
+    public List<MemberResponseDto> getAllMembers() {
+        List<MemberEntity> memberEntities = memberRepository.findAll();
+        List<MemberResponseDto> memberResponseDtos = new ArrayList<>();
+        for(MemberEntity memberEntity : memberEntities) {
+            MemberResponseDto memberResponseEntityDto = MemberResponseDto.builder()
+                    .memberId(memberEntity.getMemberId())
+                    .loginId(memberEntity.getLoginId())
+                    .nickname(memberEntity.getNickname())
+                    .authorization(memberEntity.isAuthorization())
+                    .subscribe(memberEntity.isSubscribe())
+                    .profileImg(memberEntity.getProfileImg())
+                    .build();
+            memberResponseDtos.add(memberResponseEntityDto);
+        }
+        return memberResponseDtos;
+    }
+
+    @Override
+    public Long registerMember(MembeRequestrDto membeRequestrDto) {
         MemberEntity memberDtoToEntity = MemberEntity.builder()
-                .loginId(memberDto.getLoginId())
-                .pw(memberDto.getPw())
-                .nickname(memberDto.getNickname())
-                .authorization(memberDto.isAuthorization())
-                .subscribe(memberDto.isSubscribe())
-                .avail(memberDto.isAvail())
+                .loginId(membeRequestrDto.getLoginId())
+                .pw(membeRequestrDto.getPw())
+                .nickname(membeRequestrDto.getNickname())
+//                .authorization(membeRequestrDto.isAuthorization())
+//                .subscribe(membeRequestrDto.isSubscribe())
+//                .avail(membeRequestrDto.isAvail())
                 .build();
         return memberRepository.save(memberDtoToEntity).getMemberId();
     }
 
     @Override
-    public Long updateMemberDetail(Long memberId, MemberDto memberDto) {
+    public Long updateMemberDetail(Long memberId, MembeRequestrDto membeRequestrDto) {
         MemberEntity memberEntityToUpdate = memberRepository.findMemberByMemberId(memberId);
-        memberEntityToUpdate.editMemberDetail(memberDto.getPw(), memberDto.getNickname(), memberDto.getProfileImg());
+        memberEntityToUpdate.editMemberDetail(membeRequestrDto.getPw(),
+                membeRequestrDto.getNickname(),
+                membeRequestrDto.getProfileImg());
         memberRepository.save(memberEntityToUpdate);
         return memberEntityToUpdate.getMemberId();
     }
