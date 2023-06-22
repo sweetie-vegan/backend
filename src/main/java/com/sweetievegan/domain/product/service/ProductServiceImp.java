@@ -64,6 +64,7 @@ public class ProductServiceImp implements ProductService {
                 .price(productRequestDto.getPrice())
                 .count(productRequestDto.getCount())
                 .sale(productRequestDto.isSale())
+
                 .productCategory(productCategoryEntity)
                 .build();
         productRepository.save(productDtoToEntity);
