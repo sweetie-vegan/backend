@@ -1,5 +1,6 @@
 package com.sweetievegan.domain.cart.dto;
 
+import com.sweetievegan.domain.cart.entity.CartProductEntity;
 import com.sweetievegan.domain.product.entity.ProductEntity;
 import lombok.*;
 
@@ -16,6 +17,6 @@ public class CartResponseDto {
     private Long cartId;
     private int totalCount;
     private double totalPrice;
-    private ProductEntity product;
+    private CartProductEntity cartProduct;
     private Long memberId;
 }

@@ -42,8 +42,6 @@ public class CartServiceImp implements CartService {
     @Override
     public Long registerCart(CartRequestDto cartRequestDto) {
         CartEntity cartDtoToEntity = CartEntity.builder()
-                .totalCount(cartRequestDto.getTotalCount())
-                .totalPrice(cartRequestDto.getTotalPrice())
                 .member(memberRepository.findMemberByMemberId(cartRequestDto.getMemberId()))
                 .build();
         cartRepository.save(cartDtoToEntity);

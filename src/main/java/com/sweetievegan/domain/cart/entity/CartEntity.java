@@ -18,18 +18,13 @@ public class CartEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartId;
 
-    private int totalCount;
-    private double totalPrice;
-
     @OneToOne
     @JoinColumn(name = "memberId")
     private MemberEntity member;
 
     @Builder
-    public CartEntity(Long cartId, int totalCount, double totalPrice,  MemberEntity member) {
+    public CartEntity(Long cartId, MemberEntity member) {
         this.cartId = cartId;
-        this.totalCount = totalCount;
-        this.totalPrice = totalPrice;
         this.member = member;
     }
 }
