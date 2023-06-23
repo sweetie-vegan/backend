@@ -17,6 +17,8 @@ public class CartProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartProductId;
 
+    private int count;
+
     @OneToOne
     @JoinColumn(name = "productId")
     private ProductEntity product;
@@ -26,8 +28,9 @@ public class CartProductEntity {
     private CartEntity cart;
 
     @Builder
-    public CartProductEntity(Long cartProductId, ProductEntity product, CartEntity cart) {
+    public CartProductEntity(Long cartProductId, int count, ProductEntity product, CartEntity cart) {
         this.cartProductId = cartProductId;
+        this.count = count;
         this.product = product;
         this.cart = cart;
     }
