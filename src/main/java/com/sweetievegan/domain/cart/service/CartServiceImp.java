@@ -44,7 +44,6 @@ public class CartServiceImp implements CartService {
         CartEntity cartDtoToEntity = CartEntity.builder()
                 .totalCount(cartRequestDto.getTotalCount())
                 .totalPrice(cartRequestDto.getTotalPrice())
-                .product(productRepository.findProductByProductId(cartRequestDto.getProductId()))
                 .member(memberRepository.findMemberByMemberId(cartRequestDto.getMemberId()))
                 .build();
         cartRepository.save(cartDtoToEntity);
