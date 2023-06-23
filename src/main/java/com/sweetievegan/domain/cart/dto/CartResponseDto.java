@@ -7,6 +7,7 @@ import lombok.*;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.util.List;
 
 @Data
 @Getter
@@ -15,8 +16,8 @@ import javax.persistence.ManyToOne;
 @Builder
 public class CartResponseDto {
     private Long cartId;
-    private int totalCount;
-    private double totalPrice;
-    private CartProductEntity cartProduct;
+//    private int totalCount;
+//    private double totalPrice;
+    private List<CartProductEntity> cartProducts;
     private Long memberId;
 }

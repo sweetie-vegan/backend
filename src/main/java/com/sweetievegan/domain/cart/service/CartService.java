@@ -6,7 +6,7 @@ import com.sweetievegan.domain.cart.dto.CartResponseDto;
 import java.util.List;
 
 public interface CartService {
-    List<CartResponseDto> findCartsByMemberId(Long memberId);
+    CartResponseDto findCartsByMemberId(Long memberId);
     Long registerCart(CartRequestDto cartRequestDto);
     Long removeCart(Long cartId);
 }

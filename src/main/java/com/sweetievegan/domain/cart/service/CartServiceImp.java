@@ -23,20 +23,14 @@ public class CartServiceImp implements CartService {
     private final MemberRepository memberRepository;
 
     @Override
-    public List<CartResponseDto> findCartsByMemberId(Long memberId) {
-//        List<CartEntity> cartEntities = cartRepository.findCartsByMemberId(memberId);
-        List<CartResponseDto> cartResponseDtos = new ArrayList<>();
-//        for(CartEntity cartEntity : cartEntities) {
-//            CartResponseDto cartResponseDto = CartResponseDto.builder()
-//                    .cartId(cartEntity.getCartId())
-//                    .totalCount(cartEntity.getTotalCount())
-//                    .totalPrice(cartEntity.getTotalPrice())
-//                    .product(cartEntity.getProduct())
-//                    .memberId(cartEntity.getMember().getMemberId())
-//                    .build();
-//            cartResponseDtos.add(cartResponseDto);
-//        }
-        return cartResponseDtos;
+    public CartResponseDto findCartsByMemberId(Long memberId) {
+       CartEntity cartEntity = cartRepository.findCartByMemberId(memberId);
+       CartResponseDto cartResponseDto = CartResponseDto.builder()
+               .memberId(cartEntity.getMember().getMemberId())
+               .cartId(cartEntity.getCartId())
+               .cartProducts(cartEntity.getCartProducts())
+               .build();
+       return cartResponseDto;
     }
 
     @Override
