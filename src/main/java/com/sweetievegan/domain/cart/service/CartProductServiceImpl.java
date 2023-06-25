@@ -1,5 +1,6 @@
 package com.sweetievegan.domain.cart.service;
 
+import com.sweetievegan.domain.cart.dto.CartProductDto;
 import com.sweetievegan.domain.cart.dto.CartRequestDto;
 import com.sweetievegan.domain.cart.entity.CartProductEntity;
 import com.sweetievegan.domain.cart.repository.CartProductRepository;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,10 +20,18 @@ public class CartProductServiceImpl implements CartProductService {
     private final CartProductRepository cartProductRepository;
 
     @Override
-    public List<CartProductEntity> findCartProductsByCartId(Long cartId) {
+    public List<CartProductDto> findCartProductsByCartId(Long cartId) {
         List<CartProductEntity> cartProductEntities = cartProductRepository.findCartProductsByCartId(cartId);
-
-        return null;
+        List<CartProductDto> cartProductDtos = new ArrayList<>();
+        for(CartProductEntity cartProductEntity : cartProductEntities) {
+            CartProductDto cartProductDto = CartProductDto.builder()
+                    .cartProductId(cartProductEntity.getCartProductId())
+                    .count(cartProductEntity.getCount())
+                    .product(cartProductEntity.getProduct())
+                    .build();
+            cartProductDtos.add(cartProductDto);
+        }
+        return cartProductDtos;
     }
 
     @Override

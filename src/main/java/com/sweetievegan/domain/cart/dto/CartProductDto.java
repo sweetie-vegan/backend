@@ -13,5 +13,4 @@ public class CartProductDto {
     private Long cartProductId;
     private int count;
     private ProductEntity product;
-    private CartEntity cart;
 }
