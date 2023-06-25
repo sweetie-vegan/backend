@@ -1,6 +1,6 @@
 package com.sweetievegan.domain.cart.service;
 
-import com.sweetievegan.domain.cart.dto.CartProductDto;
+import com.sweetievegan.domain.cart.dto.CartProductRequestDto;
 import com.sweetievegan.domain.cart.dto.CartRequestDto;
 import com.sweetievegan.domain.cart.entity.CartProductEntity;
 import com.sweetievegan.domain.cart.repository.CartProductRepository;
@@ -20,22 +20,24 @@ public class CartProductServiceImpl implements CartProductService {
     private final CartProductRepository cartProductRepository;
 
     @Override
-    public List<CartProductDto> findCartProductsByCartId(Long cartId) {
+    public List<CartProductRequestDto> findCartProductsByCartId(Long cartId) {
         List<CartProductEntity> cartProductEntities = cartProductRepository.findCartProductsByCartId(cartId);
-        List<CartProductDto> cartProductDtos = new ArrayList<>();
+        List<CartProductRequestDto> cartProductRequestDtos = new ArrayList<>();
         for(CartProductEntity cartProductEntity : cartProductEntities) {
-            CartProductDto cartProductDto = CartProductDto.builder()
+            CartProductRequestDto cartProductRequestDto = CartProductRequestDto.builder()
                     .cartProductId(cartProductEntity.getCartProductId())
                     .count(cartProductEntity.getCount())
-                    .product(cartProductEntity.getProduct())
+                    .cartId(cartProductEntity.getCart().getCartId())
+                    .productId(cartProductEntity.getProduct().getProductId())
                     .build();
-            cartProductDtos.add(cartProductDto);
+            cartProductRequestDtos.add(cartProductRequestDto);
         }
-        return cartProductDtos;
+        return cartProductRequestDtos;
     }
 
     @Override
     public CartProductEntity registerCartProduct(Long cartId, CartRequestDto cartRequestDto) {
+        Car
         return null;
     }
 

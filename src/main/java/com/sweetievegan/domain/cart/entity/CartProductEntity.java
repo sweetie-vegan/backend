@@ -21,7 +21,8 @@ public class CartProductEntity {
     @OneToOne
     @JoinColumn(name = "productId")
     private ProductEntity product;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "cartId")
-//    private CartEntity cart;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cartId")
+    private CartEntity cart;
 }
