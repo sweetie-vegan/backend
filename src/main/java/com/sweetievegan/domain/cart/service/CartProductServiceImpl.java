@@ -19,7 +19,8 @@ public class CartProductServiceImpl implements CartProductService {
 
     @Override
     public List<CartProductEntity> findCartProductsByCartId(Long cartId) {
-        List<CartProductEntity> cartProductEntities = cartProductRepository.findCartB
+        List<CartProductEntity> cartProductEntities = cartProductRepository.findCartProductsByCartId(cartId);
+
         return null;
     }
 

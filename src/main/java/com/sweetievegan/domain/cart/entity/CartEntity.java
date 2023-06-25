@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,9 +24,8 @@ public class CartEntity {
     @JoinColumn(name = "memberId")
     private MemberEntity member;
 
-    @OneToMany
-    @JoinColumn(name = "cartId")
-    private List<CartProductEntity> cartProducts;
+    @OneToMany(mappedBy = "cartId")
+    private List<CartProductEntity> cartProducts = new ArrayList<>();
 
     @Builder
     public CartEntity(Long cartId, MemberEntity member, List<CartProductEntity> cartProducts) {
