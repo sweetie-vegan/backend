@@ -16,8 +16,8 @@ import java.util.List;
 @Builder
 public class CartResponseDto {
     private Long cartId;
+    private Long memberId;
+    private List<CartProductEntity> cartProducts;
 //    private int totalCount;
 //    private double totalPrice;
-    private List<CartProductEntity> cartProducts;
-    private Long memberId;
 }
