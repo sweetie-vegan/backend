@@ -1,5 +1,6 @@
 package com.sweetievegan.domain.cart.dto;
 
+import com.sweetievegan.domain.product.dto.ProductResponseDto;
 import com.sweetievegan.domain.product.entity.ProductEntity;
 import lombok.*;
 
@@ -9,6 +10,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class CartProductResponseDto {
-    private ProductEntity product;
+    private ProductResponseDto product;
     private int count;
 }

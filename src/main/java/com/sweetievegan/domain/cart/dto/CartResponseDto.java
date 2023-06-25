@@ -7,6 +7,7 @@ import lombok.*;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,7 +18,7 @@ import java.util.List;
 public class CartResponseDto {
     private Long cartId;
     private Long memberId;
-    private List<CartProductEntity> cartProducts;
+    private List<CartProductResponseDto> cartProducts;
 //    private int totalCount;
 //    private double totalPrice;
 }

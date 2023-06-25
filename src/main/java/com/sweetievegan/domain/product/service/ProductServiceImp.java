@@ -1,5 +1,6 @@
 package com.sweetievegan.domain.product.service;
 
+import com.sweetievegan.domain.cart.dto.CartProductResponseDto;
 import com.sweetievegan.domain.product.dto.ProductRequestDto;
 import com.sweetievegan.domain.product.dto.ProductResponseDto;
 import com.sweetievegan.domain.product.entity.ProductCategoryEntity;
@@ -24,6 +25,18 @@ public class ProductServiceImp implements ProductService {
     private final ProductCategoryRepository productCategoryRepository;
     private final ProductCompanyRepository productCompanyRepository;
 
+    public ProductResponseDto productEntityToDto(ProductEntity productEntity) {
+        ProductResponseDto productResponseDto = ProductResponseDto.builder()
+                .productId(productEntity.getProductId())
+                .productName(productEntity.getProductName())
+                .productDescription(productEntity.getProductDescription())
+                .price(productEntity.getPrice())
+                .count(productEntity.getCount())
+                .sale(productEntity.isSellStatus())
+                .productCategoryId(productEntity.getProductCategory().getCategoryId())
+                .build();
+        return productResponseDto;
+    }
     @Override
     public List<ProductResponseDto> getAllProducts() {
         List<ProductEntity> productEntities = productRepository.findAll();

@@ -1,6 +1,5 @@
 package com.sweetievegan.domain.cart.service;
 
-import com.sweetievegan.domain.cart.dto.CartProductRequestDto;
 import com.sweetievegan.domain.cart.dto.CartProductResponseDto;
 import com.sweetievegan.domain.cart.dto.CartRequestDto;
 import com.sweetievegan.domain.cart.entity.CartProductEntity;
@@ -16,7 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class CartProductServiceImpl implements CartProductService {
+public class CartProductServiceImp implements CartProductService {
     private final CartRepository cartRepository;
     private final CartProductRepository cartProductRepository;
 

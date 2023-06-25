@@ -1,7 +1,11 @@
 package com.sweetievegan.domain.product.service;
 
+import com.sweetievegan.domain.cart.dto.CartProductResponseDto;
+import com.sweetievegan.domain.cart.entity.CartProductEntity;
 import com.sweetievegan.domain.product.dto.ProductCategoryDto;
+import com.sweetievegan.domain.product.dto.ProductResponseDto;
 import com.sweetievegan.domain.product.entity.ProductCategoryEntity;
+import com.sweetievegan.domain.product.entity.ProductEntity;
 import com.sweetievegan.domain.product.repository.ProductCategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +19,7 @@ import java.util.List;
 @Transactional
 public class ProductCategoryServiceImp implements ProductCategoryService {
     private final ProductCategoryRepository productCategoryRepository;
+
     @Override
     public List<ProductCategoryDto> getAllProductCategories() {
         List<ProductCategoryEntity> productCategoryEntities = productCategoryRepository.findAll();

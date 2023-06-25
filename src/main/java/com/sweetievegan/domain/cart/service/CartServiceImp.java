@@ -1,12 +1,14 @@
 package com.sweetievegan.domain.cart.service;
 
+import com.sweetievegan.domain.cart.dto.CartProductResponseDto;
 import com.sweetievegan.domain.cart.dto.CartRequestDto;
 import com.sweetievegan.domain.cart.dto.CartResponseDto;
 import com.sweetievegan.domain.cart.entity.CartEntity;
+import com.sweetievegan.domain.cart.entity.CartProductEntity;
 import com.sweetievegan.domain.cart.repository.CartRepository;
 import com.sweetievegan.domain.member.repository.MemberRepository;
-import com.sweetievegan.domain.product.repository.ProductCategoryRepository;
-import com.sweetievegan.domain.product.repository.ProductRepository;
+import com.sweetievegan.domain.product.service.ProductService;
+import com.sweetievegan.domain.product.service.ProductServiceImp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +21,8 @@ import java.util.List;
 @Transactional
 public class CartServiceImp implements CartService {
     private final CartRepository cartRepository;
-    private final ProductRepository productRepository;
     private final MemberRepository memberRepository;
+    private final ProductServiceImp productServiceImpl;
 
     @Override
     public CartResponseDto findCartsByMemberId(Long memberId) {
@@ -28,9 +30,21 @@ public class CartServiceImp implements CartService {
        CartResponseDto cartResponseDto = CartResponseDto.builder()
                .memberId(cartEntity.getMember().getMemberId())
                .cartId(cartEntity.getCartId())
-               .cartProducts(cartEntity.getCartProducts())
+               .cartProducts(cartProductEntityToDto(cartEntity.getCartProducts()))
                .build();
        return cartResponseDto;
+    }
+
+    public List<CartProductResponseDto> cartProductEntityToDto(List<CartProductEntity> cartProductEntities) {
+        List<CartProductResponseDto> cartProductResponseDtos = new ArrayList<>();
+        for(CartProductEntity cartProductEntity : cartProductEntities) {
+            CartProductResponseDto cartProductResponseDto = CartProductResponseDto.builder()
+                    .product(productServiceImpl.productEntityToDto(cartProductEntity.getProduct()))
+                    .count(cartProductEntity.getCount())
+                    .build();
+            cartProductResponseDtos.add(cartProductResponseDto);
+        }
+        return cartProductResponseDtos;
     }
 
     @Override
