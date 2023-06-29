@@ -25,4 +25,5 @@ public class CartEntity {
 
     @OneToMany(mappedBy = "cart")
     private List<CartProductEntity> cartProducts = new ArrayList<>();
+
 }

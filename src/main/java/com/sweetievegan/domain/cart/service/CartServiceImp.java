@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +29,8 @@ public class CartServiceImp implements CartService {
     @Override
     public CartResponseDto findCartsByMemberId(Long memberId) {
         MemberEntity memberTofind = memberRepository.findMemberByMemberId(memberId);
-       CartEntity cartEntity = cartRepository.findByMember(memberTofind);
+       CartEntity cartEntity = Optional.ofNullable(cartRepository.findByMember(memberTofind))
+               .orElseThrow(()-> new NoSuchElementException());
        CartResponseDto cartResponseDto = CartResponseDto.builder()
                .memberId(cartEntity.getMember().getMemberId())
                .cartId(cartEntity.getCartId())
