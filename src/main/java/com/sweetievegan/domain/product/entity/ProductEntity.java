@@ -7,6 +7,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
 @Table(name="products")
 public class ProductEntity {
     @Id
@@ -35,16 +37,6 @@ public class ProductEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "companyId")
     private ProductCompanyEntity productCompany;
-
-    @Builder
-    public ProductEntity(String productName, String productDescription, int price, int count, ProductCategoryEntity productCategory, ProductCompanyEntity productCompany) {
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.price = price;
-        this.count = count;
-        this.productCategory = productCategory;
-        this.productCompany = productCompany;
-    }
 
     public void editProductDetail(String productName, String productDescription, int price, int count, ProductCategoryEntity productCategory, ProductCompanyEntity productCompany) {
         this.productName = productName;

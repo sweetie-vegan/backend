@@ -1,26 +1,20 @@
 package com.sweetievegan.domain.product.entity;
 
 import com.sweetievegan.domain.product.dto.ProductCategoryDto;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
 @Table(name = "product_categories")
 public class ProductCategoryEntity {
     @Id
     private Long categoryId;
     private String categoryName;
-
-    @Builder
-    public ProductCategoryEntity(Long categoryId, String categoryName) {
-        this.categoryId = categoryId;
-        this.categoryName = categoryName;
-    }
 
     public void editProductCategory(ProductCategoryDto productCategoryDto) {
         this.categoryId = productCategoryDto.getCategoryId();
