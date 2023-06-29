@@ -15,6 +15,6 @@ public class ProductResponseDto {
     private String productDescription;
     private int price;
     private int count;
-    private boolean sale;
+    private boolean sellStatus;
     private Long productCategoryId;
 }

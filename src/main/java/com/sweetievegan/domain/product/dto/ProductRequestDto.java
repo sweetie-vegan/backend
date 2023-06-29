@@ -14,7 +14,7 @@ public class ProductRequestDto {
     private String productDescription;
     private int price;
     private int count;
-    private boolean sale;
+    private boolean sellStatus;
     private Long productCategoryId;
     private String companyName;
 }
