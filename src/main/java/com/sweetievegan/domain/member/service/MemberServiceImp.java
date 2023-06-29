@@ -1,6 +1,6 @@
 package com.sweetievegan.domain.member.service;
 
-import com.sweetievegan.domain.member.dto.MembeRequestrDto;
+import com.sweetievegan.domain.member.dto.MemberRequestDto;
 import com.sweetievegan.domain.member.dto.MemberResponseDto;
 import com.sweetievegan.domain.member.entity.MemberEntity;
 import com.sweetievegan.domain.member.repository.MemberRepository;
@@ -28,6 +28,7 @@ public class MemberServiceImp implements MemberService {
                     .nickname(memberEntity.getNickname())
                     .authorization(memberEntity.isAuthorization())
                     .subscribe(memberEntity.isSubscribe())
+                    .avail(memberEntity.isAvail())
                     .profileImg(memberEntity.getProfileImg())
                     .build();
             memberResponseDtos.add(memberResponseEntityDto);
@@ -36,24 +37,24 @@ public class MemberServiceImp implements MemberService {
     }
 
     @Override
-    public Long registerMember(MembeRequestrDto membeRequestrDto) {
+    public Long registerMember(MemberRequestDto memberRequestDto) {
         MemberEntity memberDtoToEntity = MemberEntity.builder()
-                .loginId(membeRequestrDto.getLoginId())
-                .pw(membeRequestrDto.getPw())
-                .nickname(membeRequestrDto.getNickname())
-//                .authorization(membeRequestrDto.isAuthorization())
-//                .subscribe(membeRequestrDto.isSubscribe())
-//                .avail(membeRequestrDto.isAvail())
+                .loginId(memberRequestDto.getLoginId())
+                .pw(memberRequestDto.getPw())
+                .nickname(memberRequestDto.getNickname())
+                .authorization(false)
+                .subscribe(false)
+                .avail(true)
                 .build();
         return memberRepository.save(memberDtoToEntity).getMemberId();
     }
 
     @Override
-    public Long updateMemberDetail(Long memberId, MembeRequestrDto membeRequestrDto) {
+    public Long updateMemberDetail(Long memberId, MemberRequestDto memberRequestDto) {
         MemberEntity memberEntityToUpdate = memberRepository.findMemberByMemberId(memberId);
-        memberEntityToUpdate.editMemberDetail(membeRequestrDto.getPw(),
-                membeRequestrDto.getNickname(),
-                membeRequestrDto.getProfileImg());
+        memberEntityToUpdate.editMemberDetail(
+                memberRequestDto.getNickname(),
+                memberRequestDto.getProfileImg());
         memberRepository.save(memberEntityToUpdate);
         return memberEntityToUpdate.getMemberId();
     }

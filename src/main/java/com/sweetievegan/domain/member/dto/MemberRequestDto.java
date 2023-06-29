@@ -9,12 +9,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberResponseDto {
-    private Long memberId;
+public class MemberRequestDto {
+//    private Long memberId;
     private String loginId;
+    private String pw;
     private String nickname;
-    private boolean authorization;
-    private boolean subscribe;
-    private boolean avail;
+//    private boolean authorization;
+//    private boolean subscribe;
+//    private boolean avail;
     private String profileImg;
 }

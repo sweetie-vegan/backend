@@ -7,6 +7,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
 @Table(name = "members")
 public class MemberEntity {
     @Id
@@ -16,31 +18,26 @@ public class MemberEntity {
     private String loginId;
     private String pw;
     private String nickname;
+
+    @Column(nullable = true)
     private boolean authorization;
+
+    @Column(nullable = true)
     private boolean subscribe;
+
+    @Column(nullable = true)
     private boolean avail;
 
     @Column(nullable = true)
     private String profileImg;
 
-    @Builder
-    public MemberEntity(Long memberId, String loginId, String pw, String nickname, boolean authorization, boolean subscribe, boolean avail, String profileImg) {
-        this.memberId = memberId;
-        this.loginId = loginId;
-        this.pw = pw;
-        this.nickname = nickname;
-        this.authorization = authorization;
-        this.subscribe = subscribe;
-        this.avail = avail;
-        this.profileImg = profileImg;
-    }
-
-    public void editMemberDetail(String pw, String nickname, String profileImg) {
-        this.pw = pw;
+    public void editMemberDetail(String nickname, String profileImg) {
         this.nickname = nickname;
         this.profileImg = profileImg;
     }
-
+    public void editPw(String pw) {
+        this.pw = pw;
+    }
     public void updateAuthorization() {
         this.avail = !this.avail;
     }

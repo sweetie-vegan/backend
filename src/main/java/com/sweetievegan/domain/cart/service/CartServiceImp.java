@@ -6,8 +6,8 @@ import com.sweetievegan.domain.cart.dto.CartResponseDto;
 import com.sweetievegan.domain.cart.entity.CartEntity;
 import com.sweetievegan.domain.cart.entity.CartProductEntity;
 import com.sweetievegan.domain.cart.repository.CartRepository;
+import com.sweetievegan.domain.member.entity.MemberEntity;
 import com.sweetievegan.domain.member.repository.MemberRepository;
-import com.sweetievegan.domain.product.service.ProductService;
 import com.sweetievegan.domain.product.service.ProductServiceImp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,11 +22,12 @@ import java.util.List;
 public class CartServiceImp implements CartService {
     private final CartRepository cartRepository;
     private final MemberRepository memberRepository;
-    private final ProductServiceImp productServiceImpl;
+    private final ProductServiceImp productServiceImp;
 
     @Override
     public CartResponseDto findCartsByMemberId(Long memberId) {
-       CartEntity cartEntity = cartRepository.findCartByMemberId(memberId);
+        MemberEntity memberTofind = memberRepository.findMemberByMemberId(memberId);
+       CartEntity cartEntity = cartRepository.findByMember(memberTofind);
        CartResponseDto cartResponseDto = CartResponseDto.builder()
                .memberId(cartEntity.getMember().getMemberId())
                .cartId(cartEntity.getCartId())
@@ -39,7 +40,7 @@ public class CartServiceImp implements CartService {
         List<CartProductResponseDto> cartProductResponseDtos = new ArrayList<>();
         for(CartProductEntity cartProductEntity : cartProductEntities) {
             CartProductResponseDto cartProductResponseDto = CartProductResponseDto.builder()
-                    .product(productServiceImpl.productEntityToDto(cartProductEntity.getProduct()))
+                    .product(productServiceImp.productEntityToDto(cartProductEntity.getProduct()))
                     .count(cartProductEntity.getCount())
                     .build();
             cartProductResponseDtos.add(cartProductResponseDto);

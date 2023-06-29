@@ -23,6 +23,6 @@ public class CartEntity {
     @JoinColumn(name = "memberId")
     private MemberEntity member;
 
-    @OneToMany(mappedBy = "cartId")
+    @OneToMany(mappedBy = "cart")
     private List<CartProductEntity> cartProducts = new ArrayList<>();
 }
