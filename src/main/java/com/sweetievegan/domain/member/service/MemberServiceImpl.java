@@ -1,7 +1,7 @@
 package com.sweetievegan.domain.member.service;
 
-import com.sweetievegan.domain.member.dto.MemberDto;
-import com.sweetievegan.domain.member.entity.MemberEntity;
+import com.sweetievegan.domain.member.dto.MemberRegisterRequest;
+import com.sweetievegan.domain.member.entity.Member;
 import com.sweetievegan.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,33 +12,30 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 @Transactional
 public class MemberServiceImpl implements MemberService {
-
     private final MemberRepository memberRepository;
 
     @Override
-    public Long registerMember(MemberDto memberDto) {
-        MemberEntity memberDtoToEntity = MemberEntity.builder()
-                .loginId(memberDto.getLoginId())
-                .pw(memberDto.getPw())
-                .nickname(memberDto.getNickname())
-                .authorization(memberDto.isAuthorization())
-                .subscribe(memberDto.isSubscribe())
-                .avail(memberDto.isAvail())
+    public Long registerMember(MemberRegisterRequest request) {
+        Member memberDtoToEntity = Member.builder()
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .nickname(request.getNickname())
+                .isDeleted(false)
                 .build();
-        return memberRepository.save(memberDtoToEntity).getMemberId();
+        return memberRepository.save(memberDtoToEntity).getId();
     }
 
     @Override
-    public Long updateMemberDetail(Long memberId, MemberDto memberDto) {
-        MemberEntity memberEntityToUpdate = memberRepository.findMemberByMemberId(memberId);
-        memberEntityToUpdate.editMemberDetail(memberDto.getPw(), memberDto.getNickname(), memberDto.getProfileImg());
-        memberRepository.save(memberEntityToUpdate);
-        return memberEntityToUpdate.getMemberId();
+    public Long updateMemberDetail(Long id, MemberRegisterRequest request) {
+        Member memberToUpdate = memberRepository.findMemberById(id);
+        memberToUpdate.editMemberDetail(request.getPassword(), request.getNickname(), request.getProfileImg());
+        return id;
     }
 
     @Override
-    public Long removeMember(Long memberId) {
-        memberRepository.deleteById(memberId);
-        return memberId;
+    public Long removeMember(Long id) {
+        Member member = memberRepository.findMemberById(id);
+        member.removeMember();
+        return id;
     }
 }

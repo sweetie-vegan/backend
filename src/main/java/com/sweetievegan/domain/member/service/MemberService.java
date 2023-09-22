@@ -1,9 +1,9 @@
 package com.sweetievegan.domain.member.service;
 
-import com.sweetievegan.domain.member.dto.MemberDto;
+import com.sweetievegan.domain.member.dto.MemberRegisterRequest;
 
 public interface MemberService {
-    Long registerMember(MemberDto memberDto);
-    Long updateMemberDetail(Long memberId, MemberDto memberDto);
-    Long removeMember(Long memberId);
+    Long registerMember(MemberRegisterRequest request);
+    Long updateMemberDetail(Long id, MemberRegisterRequest request);
+    Long removeMember(Long id);
 }
