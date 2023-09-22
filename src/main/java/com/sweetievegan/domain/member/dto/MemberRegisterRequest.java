@@ -6,7 +6,6 @@ import org.springframework.lang.Nullable;
 
 @Data
 public class MemberRegisterRequest {
-    private Long id;
     private String email;
     private String password;
     private String nickname;
@@ -15,8 +14,7 @@ public class MemberRegisterRequest {
     private String profileImg;
 
     @Builder
-    public MemberRegisterRequest(Long id, String email, String password, String nickname, String profileImg) {
-        this.id = id;
+    public MemberRegisterRequest(String email, String password, String nickname, String profileImg) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
