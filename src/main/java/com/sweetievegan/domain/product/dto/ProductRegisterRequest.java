@@ -9,7 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductCategoryDto {
-    private Long categoryId;
-    private String categoryName;
+public class ProductRegisterRequest {
+    private String name;
+    private String description;
+    private int price;
+    private int count;
+    private boolean isSoldout;
+    private Long productCategoryId;
 }

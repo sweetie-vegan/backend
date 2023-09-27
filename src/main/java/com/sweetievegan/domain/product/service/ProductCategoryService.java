@@ -1,12 +1,12 @@
 package com.sweetievegan.domain.product.service;
 
-import com.sweetievegan.domain.product.dto.ProductCategoryDto;
+import com.sweetievegan.domain.product.dto.ProductCategoryRequest;
 
 import java.util.List;
 
 public interface ProductCategoryService {
-    List<ProductCategoryDto> getAllProductCategories();
-    Long registerProductCategory(ProductCategoryDto productCategoryDto);
-    ProductCategoryDto updateProductCategoryName(ProductCategoryDto productCategoryDto);
+    List<ProductCategoryRequest> getAllProductCategories();
+    Long registerProductCategory(ProductCategoryRequest productCategoryRequest);
+    ProductCategoryRequest updateProductCategoryName(ProductCategoryRequest productCategoryRequest);
     Long removeProductCategory(Long categoryId);
 }

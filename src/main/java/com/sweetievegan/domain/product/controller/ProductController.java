@@ -1,7 +1,7 @@
 package com.sweetievegan.domain.product.controller;
 
-import com.sweetievegan.domain.product.dto.ProductCategoryDto;
-import com.sweetievegan.domain.product.dto.ProductRequestDto;
+import com.sweetievegan.domain.product.dto.ProductCategoryRequest;
+import com.sweetievegan.domain.product.dto.ProductRegisterRequest;
 import com.sweetievegan.domain.product.service.ProductCategoryService;
 import com.sweetievegan.domain.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -31,19 +31,19 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(productService.findProductsBySearchingKeyword(keyword, price, sale));
     }
     @PostMapping("")
-    public ResponseEntity<?> productRegister(@RequestBody ProductRequestDto productRequestDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.registerProduct(productRequestDto));
+    public ResponseEntity<?> productRegister(@RequestBody ProductRegisterRequest productRegisterRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.registerProduct(productRegisterRequest));
     }
     @PutMapping("/{productId}")
-    public ResponseEntity<?> productModify(@PathVariable("productId") Long productId, @RequestBody ProductRequestDto productRequestDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProductDetail(productId, productRequestDto));
+    public ResponseEntity<?> productModify(@PathVariable("productId") Long productId, @RequestBody ProductRegisterRequest productRegisterRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.updateProductDetail(productId, productRegisterRequest));
     }
     @DeleteMapping("/{productId}")
     public ResponseEntity<?> productDelete(@PathVariable("productId") Long productId) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.removeProduct(productId));
     }
     @PostMapping("/productCategory")
-    public ResponseEntity<?> productCategoryRegister(@RequestBody ProductCategoryDto productCategoryDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(productCategoryService.registerProductCategory(productCategoryDto));
+    public ResponseEntity<?> productCategoryRegister(@RequestBody ProductCategoryRequest productCategoryRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(productCategoryService.registerProductCategory(productCategoryRequest));
     }
 }

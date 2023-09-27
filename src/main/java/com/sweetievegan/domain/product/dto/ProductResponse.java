@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductResponseDto {
-    private Long productId;
-    private String productName;
-    private String productDescription;
+public class ProductResponse {
+    private Long id;
+    private String name;
+    private String description;
     private int price;
     private int count;
-    private boolean sale;
+    private boolean isSoldout;
     private Long productCategoryId;
 }

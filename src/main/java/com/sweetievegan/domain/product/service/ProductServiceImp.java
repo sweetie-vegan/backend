@@ -1,9 +1,9 @@
 package com.sweetievegan.domain.product.service;
 
-import com.sweetievegan.domain.product.dto.ProductRequestDto;
-import com.sweetievegan.domain.product.dto.ProductResponseDto;
-import com.sweetievegan.domain.product.entity.ProductCategoryEntity;
-import com.sweetievegan.domain.product.entity.ProductEntity;
+import com.sweetievegan.domain.product.dto.ProductRegisterRequest;
+import com.sweetievegan.domain.product.dto.ProductResponse;
+import com.sweetievegan.domain.product.entity.ProductCategory;
+import com.sweetievegan.domain.product.entity.Product;
 import com.sweetievegan.domain.product.repository.ProductCategoryRepository;
 import com.sweetievegan.domain.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,17 +22,17 @@ public class ProductServiceImp implements ProductService {
     private final ProductCategoryRepository productCategoryRepository;
 
     @Override
-    public List<ProductResponseDto> getAllProducts() {
-        List<ProductEntity> productEntities = productRepository.findAll();
-        List<ProductResponseDto> productDtos = new ArrayList<>();
-        for(ProductEntity productEntity : productEntities) {
-            ProductResponseDto productEntityToDto = ProductResponseDto.builder()
-                    .productId(productEntity.getProductId())
-                    .productName(productEntity.getProductName())
-                    .productDescription(productEntity.getProductDescription())
-                    .price(productEntity.getPrice())
-                    .count(productEntity.getCount())
-                    .sale(productEntity.isSale())
+    public List<ProductResponse> getAllProducts() {
+        List<Product> productEntities = productRepository.findAll();
+        List<ProductResponse> productDtos = new ArrayList<>();
+        for(Product product : productEntities) {
+            ProductResponse productEntityToDto = ProductResponse.builder()
+                    .id(product.getId())
+                    .name(product.getName())
+                    .description(product.getDescription())
+                    .price(product.getPrice())
+                    .count(product.getCount())
+                    .isSoldout(product.isSoldout())
 //                    .productCategoryId(productEntity.getProductCategory().getCategoryId().longValue())
                     .build();
             productDtos.add(productEntityToDto);
@@ -41,41 +41,41 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public ProductResponseDto findProductByProductId(Long productId) {
-        ProductEntity productEntity = productRepository.findProductByProductId(productId);
-        ProductResponseDto productEntityToDto = ProductResponseDto.builder()
-                .productId(productEntity.getProductId())
-                .productName(productEntity.getProductName())
-                .productDescription(productEntity.getProductDescription())
-                .price(productEntity.getPrice())
-                .count(productEntity.getCount())
-                .sale(productEntity.isSale())
-                .productCategoryId(productEntity.getProductCategory().getCategoryId())
+    public ProductResponse findProductByProductId(Long productId) {
+        Product product = productRepository.findProductByProductId(productId);
+        ProductResponse productEntityToDto = ProductResponse.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .description(product.getDescription())
+                .price(product.getPrice())
+                .count(product.getCount())
+                .isSoldout(product.isSoldout())
+                .productCategoryId(product.getProductCategory().getCategoryId())
                 .build();
         return productEntityToDto;
     }
 
     @Override
-    public Long registerProduct(ProductRequestDto productRequestDto) {
-        ProductCategoryEntity productCategoryEntity = productCategoryRepository.findProductCategoryEntityByCategoryId(productRequestDto.getProductCategoryId());
-        ProductEntity productDtoToEntity = ProductEntity.builder()
-                .productName(productRequestDto.getProductName())
-                .productDescription(productRequestDto.getProductDescription())
-                .price(productRequestDto.getPrice())
-                .count(productRequestDto.getCount())
-                .sale(productRequestDto.isSale())
-                .productCategory(productCategoryEntity)
+    public Long registerProduct(ProductRegisterRequest productRegisterRequest) {
+        ProductCategory productCategory = productCategoryRepository.findProductCategoryByCategoryId(productRegisterRequest.getProductCategoryId());
+        Product productDtoToEntity = Product.builder()
+                .name(productRegisterRequest.getName())
+                .description(productRegisterRequest.getDescription())
+                .price(productRegisterRequest.getPrice())
+                .count(productRegisterRequest.getCount())
+                .isSoldout(productRegisterRequest.isSoldout())
+                .productCategory(productCategory)
                 .build();
         productRepository.save(productDtoToEntity);
-        return productRepository.save(productDtoToEntity).getProductId();
+        return productRepository.save(productDtoToEntity).getId();
     }
 
     @Override
-    public ProductRequestDto updateProductDetail(Long productId, ProductRequestDto productRequestDto) {
-        ProductCategoryEntity productCategoryEntity = productCategoryRepository.findProductCategoryEntityByCategoryId(productRequestDto.getProductCategoryId());
-        ProductEntity productEntityToUpdate = productRepository.findProductByProductId(productId);
-        productEntityToUpdate.editProductDetail(productRequestDto.getProductName(), productRequestDto.getProductDescription(), productRequestDto.getPrice(), productRequestDto.getCount(), productCategoryEntity);
-        return productRequestDto;
+    public ProductRegisterRequest updateProductDetail(Long productId, ProductRegisterRequest productRegisterRequest) {
+        ProductCategory productCategory = productCategoryRepository.findProductCategoryByCategoryId(productRegisterRequest.getProductCategoryId());
+        Product productToUpdate = productRepository.findProductByProductId(productId);
+        productToUpdate.editProductDetail(productRegisterRequest.getName(), productRegisterRequest.getDescription(), productRegisterRequest.getPrice(), productRegisterRequest.getCount(), productCategory);
+        return productRegisterRequest;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public List<ProductRequestDto> findProductsBySearchingKeyword(String keyword, int price, boolean sale) {
+    public List<ProductRegisterRequest> findProductsBySearchingKeyword(String keyword, int price, boolean sale) {
         return null;
     }
 }

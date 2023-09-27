@@ -1,7 +1,7 @@
 package com.sweetievegan.domain.product.service;
 
-import com.sweetievegan.domain.product.dto.ProductCategoryDto;
-import com.sweetievegan.domain.product.entity.ProductCategoryEntity;
+import com.sweetievegan.domain.product.dto.ProductCategoryRequest;
+import com.sweetievegan.domain.product.entity.ProductCategory;
 import com.sweetievegan.domain.product.repository.ProductCategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,33 +14,33 @@ import java.util.List;
 public class ProductCategoryServiceImp implements ProductCategoryService {
     private final ProductCategoryRepository productCategoryRepository;
     @Override
-    public List<ProductCategoryDto> getAllProductCategories() {
-        List<ProductCategoryEntity> productCategoryEntities = productCategoryRepository.findAll();
-        List<ProductCategoryDto> productCategoryDtos = new ArrayList<>();
-        for(ProductCategoryEntity productCategoryEntity : productCategoryEntities) {
-            ProductCategoryDto productCategoryEntityToDto = ProductCategoryDto.builder()
-                    .categoryId(productCategoryEntity.getCategoryId())
-                    .categoryName(productCategoryEntity.getCategoryName())
+    public List<ProductCategoryRequest> getAllProductCategories() {
+        List<ProductCategory> productCategoryEntities = productCategoryRepository.findAll();
+        List<ProductCategoryRequest> productCategoryRequests = new ArrayList<>();
+        for(ProductCategory productCategory : productCategoryEntities) {
+            ProductCategoryRequest productCategoryEntityToDto = ProductCategoryRequest.builder()
+                    .categoryId(productCategory.getCategoryId())
+                    .categoryName(productCategory.getCategoryName())
                     .build();
-            productCategoryDtos.add(productCategoryEntityToDto);
+            productCategoryRequests.add(productCategoryEntityToDto);
         }
-        return productCategoryDtos;
+        return productCategoryRequests;
     }
     @Override
-    public Long registerProductCategory(ProductCategoryDto productCategoryDto) {
-        ProductCategoryEntity productCategoryDtoToEntity = ProductCategoryEntity.builder()
-                .categoryId(productCategoryDto.getCategoryId())
-                .categoryName(productCategoryDto.getCategoryName())
+    public Long registerProductCategory(ProductCategoryRequest productCategoryRequest) {
+        ProductCategory productCategoryDtoToEntity = ProductCategory.builder()
+                .categoryId(productCategoryRequest.getCategoryId())
+                .categoryName(productCategoryRequest.getCategoryName())
                 .build();
         productCategoryRepository.save(productCategoryDtoToEntity);
-        return productCategoryDto.getCategoryId();
+        return productCategoryRequest.getCategoryId();
     }
     @Override
-    public ProductCategoryDto updateProductCategoryName(ProductCategoryDto productCategoryDto) {
-        ProductCategoryEntity productCategoryEntityToUpdate = productCategoryRepository.findProductCategoryEntityByCategoryId(productCategoryDto.getCategoryId());
-        productCategoryEntityToUpdate.editProductCategory(productCategoryDto);
-        productCategoryRepository.save(productCategoryEntityToUpdate);
-        return productCategoryDto;
+    public ProductCategoryRequest updateProductCategoryName(ProductCategoryRequest productCategoryRequest) {
+        ProductCategory productCategoryToUpdate = productCategoryRepository.findProductCategoryByCategoryId(productCategoryRequest.getCategoryId());
+        productCategoryToUpdate.editProductCategory(productCategoryRequest);
+        productCategoryRepository.save(productCategoryToUpdate);
+        return productCategoryRequest;
     }
 
     @Override
