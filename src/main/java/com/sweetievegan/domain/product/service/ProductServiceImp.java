@@ -33,7 +33,7 @@ public class ProductServiceImp implements ProductService {
                     .price(product.getPrice())
                     .count(product.getCount())
                     .isSoldout(product.isSoldout())
-//                    .productCategoryId(productEntity.getProductCategory().getCategoryId().longValue())
+                    .productCategoryId(product.getProductCategory().getCategoryId())
                     .build();
             productDtos.add(productEntityToDto);
         }
