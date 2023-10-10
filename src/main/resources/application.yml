@@ -16,16 +16,9 @@ spring:
         show_sql: true
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
-#  mvc:
-#    pathmatch:
-#      matching-strategy: ant_path_matcher
-
-#feign:
-#  client:
-#    config:
-#      default:
-#        connectTimeout: 5000
-#        readTimeout: 5000
 logging:
   level:
     com.sweetievegan: debug
+
+jwt:
+  secret: ${JWT_SECRET}
