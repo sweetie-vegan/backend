@@ -1,4 +1,4 @@
-package com.sweetievegan.auth.dto.jwt;
+package com.sweetievegan.auth.dto.request;
 
 import com.sweetievegan.auth.domain.entity.Member;
 import com.sweetievegan.auth.util.Authority;
@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberRequestDto {
+public class MemberRegisterRequest {
 	private String email;
 	private String password;
 	private String nickname;

@@ -1,4 +1,4 @@
-package com.sweetievegan.auth.dto.jwt;
+package com.sweetievegan.auth.dto.response;
 
 import com.sweetievegan.auth.domain.entity.Member;
 import lombok.AllArgsConstructor;
@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MemberResponseDto {
+public class MemberResponse {
 	private String email;
 	private String nickname;
 
-	public static MemberResponseDto of(Member member) {
-		return MemberResponseDto.builder()
+	public static MemberResponse of(Member member) {
+		return MemberResponse.builder()
 				.email(member.getEmail())
 				.nickname(member.getNickname())
 				.build();

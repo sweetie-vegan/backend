@@ -1,4 +1,4 @@
-package com.sweetievegan.recipe.dto;
+package com.sweetievegan.recipe.dto.request;
 
 import lombok.Data;
 

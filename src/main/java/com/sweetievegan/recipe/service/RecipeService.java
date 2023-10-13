@@ -1,7 +1,7 @@
 package com.sweetievegan.recipe.service;
 
-import com.sweetievegan.recipe.dto.RecipeRegisterRequest;
-import com.sweetievegan.recipe.dto.RecipeResponse;
+import com.sweetievegan.recipe.dto.request.RecipeRegisterRequest;
+import com.sweetievegan.recipe.dto.response.RecipeResponse;
 
 import java.util.List;
 

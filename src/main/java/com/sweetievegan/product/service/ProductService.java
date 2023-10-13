@@ -1,7 +1,7 @@
 package com.sweetievegan.product.service;
 
-import com.sweetievegan.product.dto.ProductRegisterRequest;
-import com.sweetievegan.product.dto.ProductResponse;
+import com.sweetievegan.product.dto.request.ProductRegisterRequest;
+import com.sweetievegan.product.dto.response.ProductResponse;
 
 import java.util.List;
 

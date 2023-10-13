@@ -1,4 +1,4 @@
-package com.sweetievegan.product.dto;
+package com.sweetievegan.product.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

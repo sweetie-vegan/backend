@@ -1,6 +1,6 @@
 package com.sweetievegan.product.service;
 
-import com.sweetievegan.product.dto.ProductCategoryRequest;
+import com.sweetievegan.product.dto.request.ProductCategoryRequest;
 
 import java.util.List;
 

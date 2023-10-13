@@ -1,8 +1,8 @@
 package com.sweetievegan.product.controller;
 
-import com.sweetievegan.product.dto.ProductCategoryRequest;
-import com.sweetievegan.product.dto.ProductRegisterRequest;
-import com.sweetievegan.product.dto.ProductResponse;
+import com.sweetievegan.product.dto.request.ProductCategoryRequest;
+import com.sweetievegan.product.dto.request.ProductRegisterRequest;
+import com.sweetievegan.product.dto.response.ProductResponse;
 import com.sweetievegan.product.service.ProductCategoryService;
 import com.sweetievegan.product.service.ProductService;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.sweetievegan.auth.dto.jwt;
+package com.sweetievegan.auth.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberLoginDto {
+public class MemberLoginRequest {
 	private String email;
 	private String password;
 

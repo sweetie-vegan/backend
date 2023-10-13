@@ -1,6 +1,6 @@
 package com.sweetievegan.product.entity;
 
-import com.sweetievegan.product.dto.ProductCategoryRequest;
+import com.sweetievegan.product.dto.request.ProductCategoryRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
