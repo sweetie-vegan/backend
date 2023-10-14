@@ -17,7 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional
 public class ProductServiceImp implements ProductService {
-
     private final ProductRepository productRepository;
     private final ProductCategoryRepository productCategoryRepository;
 
@@ -34,6 +33,7 @@ public class ProductServiceImp implements ProductService {
                     .count(product.getCount())
                     .isSoldout(product.isSoldout())
                     .productCategoryId(product.getProductCategory().getCategoryId())
+                    .ingredient(product.getIngredient())
                     .build();
             productDtos.add(productEntityToDto);
         }
@@ -51,11 +51,12 @@ public class ProductServiceImp implements ProductService {
                 .count(product.getCount())
                 .isSoldout(product.isSoldout())
                 .productCategoryId(product.getProductCategory().getCategoryId())
+                .ingredient(product.getIngredient())
                 .build();
     }
 
     @Override
-    public Long registerProduct(ProductRegisterRequest productRegisterRequest) {
+    public Long addProduct(ProductRegisterRequest productRegisterRequest) {
         ProductCategory productCategory = productCategoryRepository.findProductCategoryByCategoryId(productRegisterRequest.getProductCategoryId());
         Product productDtoToEntity = Product.builder()
                 .name(productRegisterRequest.getName())
@@ -64,6 +65,7 @@ public class ProductServiceImp implements ProductService {
                 .count(productRegisterRequest.getCount())
                 .isSoldout(productRegisterRequest.isSoldout())
                 .productCategory(productCategory)
+                .ingredient(productRegisterRequest.getIngredient())
                 .build();
         productRepository.save(productDtoToEntity);
         return productRepository.save(productDtoToEntity).getId();
