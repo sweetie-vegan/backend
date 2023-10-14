@@ -33,6 +33,7 @@ public class ProductServiceImp implements ProductService {
                     .count(product.getCount())
                     .isSoldout(product.isSoldout())
                     .productCategoryId(product.getProductCategory().getCategoryId())
+                    .ingredient(product.getIngredient())
                     .build();
             productDtos.add(productEntityToDto);
         }
@@ -50,6 +51,7 @@ public class ProductServiceImp implements ProductService {
                 .count(product.getCount())
                 .isSoldout(product.isSoldout())
                 .productCategoryId(product.getProductCategory().getCategoryId())
+                .ingredient(product.getIngredient())
                 .build();
     }
 
@@ -63,6 +65,7 @@ public class ProductServiceImp implements ProductService {
                 .count(productRegisterRequest.getCount())
                 .isSoldout(productRegisterRequest.isSoldout())
                 .productCategory(productCategory)
+                .ingredient(productRegisterRequest.getIngredient())
                 .build();
         productRepository.save(productDtoToEntity);
         return productRepository.save(productDtoToEntity).getId();
