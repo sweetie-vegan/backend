@@ -17,4 +17,5 @@ public class ProductRegisterRequest {
     private boolean isSoldout;
     private Long productCategoryId;
     private String ingredient;
+    private String recipe;
 }
