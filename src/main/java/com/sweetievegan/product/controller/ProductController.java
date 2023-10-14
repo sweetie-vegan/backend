@@ -33,9 +33,10 @@ public class ProductController {
                                                     @RequestParam(required = false) boolean sale) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.findProductsBySearchingKeyword(keyword, price, sale));
     }
+
     @PostMapping("")
     public ResponseEntity<Long> productRegister(@RequestBody ProductRegisterRequest productRegisterRequest) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.registerProduct(productRegisterRequest));
+        return ResponseEntity.status(HttpStatus.OK).body(productService.addProduct(productRegisterRequest));
     }
     @PutMapping("/{productId}")
     public ResponseEntity<ProductRegisterRequest> productModify(@PathVariable("productId") Long productId, @RequestBody ProductRegisterRequest productRegisterRequest) {

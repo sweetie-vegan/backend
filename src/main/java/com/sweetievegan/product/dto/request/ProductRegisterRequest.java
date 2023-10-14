@@ -12,8 +12,9 @@ import lombok.NoArgsConstructor;
 public class ProductRegisterRequest {
     private String name;
     private String description;
-    private int price;
+    private double price;
     private int count;
     private boolean isSoldout;
     private Long productCategoryId;
+    private String ingredient;
 }

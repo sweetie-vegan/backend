@@ -17,15 +17,17 @@ public class Product {
 
     private String name;
     private String description;
-    private int price;
+    private double price;
     private int count;
     private boolean isSoldout;
+
+    private String ingredient;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId")
     private ProductCategory productCategory;
 
-    public void editProductDetail(String name, String description, int price, int count, ProductCategory productCategory) {
+    public void editProductDetail(String name, String description, double price, int count, ProductCategory productCategory) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -33,7 +35,7 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-    public void SoldOutProduct() {
+    public void setSoldOut() {
         this.isSoldout = true;
     }
 }

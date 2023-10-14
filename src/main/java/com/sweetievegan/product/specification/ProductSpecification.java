@@ -2,7 +2,6 @@ package com.sweetievegan.product.specification;
 
 import com.sweetievegan.product.entity.Product;
 import org.springframework.data.jpa.domain.Specification;
-
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;

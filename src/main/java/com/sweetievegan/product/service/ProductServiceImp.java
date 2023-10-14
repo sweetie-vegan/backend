@@ -17,7 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional
 public class ProductServiceImp implements ProductService {
-
     private final ProductRepository productRepository;
     private final ProductCategoryRepository productCategoryRepository;
 
@@ -55,7 +54,7 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public Long registerProduct(ProductRegisterRequest productRegisterRequest) {
+    public Long addProduct(ProductRegisterRequest productRegisterRequest) {
         ProductCategory productCategory = productCategoryRepository.findProductCategoryByCategoryId(productRegisterRequest.getProductCategoryId());
         Product productDtoToEntity = Product.builder()
                 .name(productRegisterRequest.getName())

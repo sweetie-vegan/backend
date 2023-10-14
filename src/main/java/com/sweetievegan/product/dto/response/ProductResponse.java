@@ -13,8 +13,9 @@ public class ProductResponse {
     private Long id;
     private String name;
     private String description;
-    private int price;
+    private double price;
     private int count;
     private boolean isSoldout;
     private Long productCategoryId;
+    private String ingredient;
 }
