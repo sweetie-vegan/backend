@@ -18,4 +18,5 @@ public class ProductResponse {
     private boolean isSoldout;
     private Long productCategoryId;
     private String ingredient;
+    private String recipe;
 }

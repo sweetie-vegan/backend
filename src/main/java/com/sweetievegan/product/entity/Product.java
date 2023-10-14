@@ -23,6 +23,8 @@ public class Product {
 
     private String ingredient;
 
+    private String recipe;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId")
     private ProductCategory productCategory;
