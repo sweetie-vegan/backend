@@ -42,7 +42,10 @@ public class SubscibeServiceImp implements SubscribeService{
 	}
 
 	@Override
-	public Long removeSubscribe(Long id) {
+	public Long removeSubscribe(Long memberId, Long id) {
+		Member subscribeMember = subscribeRepository.findSubscribeById(id).getMember();
+		if(memberId != subscribeMember.getId())
+			throw new IllegalArgumentException("구독자 정보가 다릅니다.");
 		subscribeRepository.deleteById(id);
 		return id;
 	}

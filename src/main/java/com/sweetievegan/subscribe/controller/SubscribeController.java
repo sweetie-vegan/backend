@@ -30,4 +30,10 @@ public class SubscribeController {
 		log.info("{}", memberId);
 		return ResponseEntity.status(HttpStatus.OK).body(subscribeService.addSubscribe(memberId, request));
 	}
+	@DeleteMapping("/{subscribeId}")
+	public ResponseEntity<Long> subscribeDelete(@RequestHeader("Authorization") String accessToken,
+	                                            @PathVariable("subscribeId") Long id) {
+		Long memberId = getCurrentMemberId();
+		return ResponseEntity.status(HttpStatus.OK).body(subscribeService.removeSubscribe(memberId, id));
+	}
 }

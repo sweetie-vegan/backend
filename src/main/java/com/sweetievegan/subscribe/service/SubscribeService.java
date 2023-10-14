@@ -6,5 +6,5 @@ import com.sweetievegan.subscribe.dto.response.SubscribeResponse;
 public interface SubscribeService {
 	Long addSubscribe(Long memberId, SubscribeRegisterRequest request);
 	SubscribeResponse findSubscribeByMemberId(Long memberId);
-	Long removeSubscribe(Long id);
+	Long removeSubscribe(Long memberId, Long id);
 }
