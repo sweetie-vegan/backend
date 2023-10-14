@@ -6,6 +6,7 @@ import com.sweetievegan.auth.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -43,6 +44,8 @@ public class WebSecurityConfig {
 				.authorizeRequests()
 				.antMatchers("/auth/**").permitAll()
 				.antMatchers("/members/**").authenticated()
+				.antMatchers(HttpMethod.GET, "/products").permitAll()
+				.antMatchers("/products/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
 
 				.and()
